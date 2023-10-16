@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Lato:wght@300;400;700;900&family=Limelight&display=swap');
+
+body {
+    background-color: #44403C;
+    color: #FAFAF9;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+}
+
+#blog-title {
+    font-family: 'Limelight', sans-serif;
+    font-size: 1.3rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Anton', sans-serif;
+    color: #FACC15;
+}
+
+h1 {
+    font-size: 26px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 22px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+h5 {
+    font-size: 18px;
+}
+
+.navbar {
+    background-color: #1C1917;
+}
+
+#navBtn>a {
+    color: #FACC15;
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+#signBtn>a {
+    color: #1C1917;
+    background-color: #FACC15;
+    font-family: 'Anton', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#userBtn>a {
+    color: #1C1917;
+    background-color: #FACC15;
+    font-family: 'Anton', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    padding: 10px;
+    border-radius: 10px;
+}
