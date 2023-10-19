@@ -1,20 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Accueil
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	{# {{ dump(posts)}} #}
+	<div class='container'>
+		<div class='grid grid-cols-4 gap-2'>
+			{% for post in posts %}
+				<a href='#'>
+					<div class='m-2 flex flex-col gap-1 items-center'>
+						<img src='/uploads/{{post.featImg.filename }}' alt='{{post.slug}}' class='object-cover w-[120px] h-[200px] hover:opacity-60 rounded-lg'>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/michelgilbert/Documents/website/Symfony/cinemagik/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/michelgilbert/Documents/website/Symfony/cinemagik/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+						<h2 class='text-center'>{{ post.title}}</h2>
+						<span>{{post.category.name}}</span>
+						{# <span>{{post.user.username}}</span> #}
+						<span class='text-sm'>{{ post.releaseDate | date('d M Y') }}</span>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}
