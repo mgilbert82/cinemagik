@@ -47,8 +47,7 @@ class PostCrudController extends AbstractCrudController
             ]);
         yield TextField::new('title', 'Titre');
         yield SlugField::new('slug')
-            ->setTargetFieldName('title')
-            ->hideOnForm();
+            ->setTargetFieldName('title');
 
         yield TextField::new('featText', 'Texte mise en avant');
         yield TextField::new('trailerUrl', 'Lien bande annonce')
