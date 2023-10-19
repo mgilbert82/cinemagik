@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!
+{% endblock %}
+
+{% block body %}
+	<div class='flex items-center justify-center'>
+		<form method='post' class='flex flex-col gap-4 w-400px bg-black p-4 rounded-lg mx-auto'>
+			{% if error %}
+				<div class='alert alert-danger'>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
+
+			<h1 class='h3 mb-3 font-weight-normal flex items-center gap-2'>
+				<img src="{{ asset('images/icons/login-ico.svg') }}" alt='login-ico'>
+				{% trans %}
+				Please sign in
+				{% endtrans %}
+			</h1>
+			<input type='email' value="{{ last_username }}" name='email' id='inputEmail' class='p-4 my-4 focus:outline-none focus:border-transparent rounded-lg text-black' autocomplete='email' required autofocus placeholder='{% trans %}Email{% endtrans%}' aria-label='inputEmail'>
+			<input type='password' name='password' id='inputPassword' class='p-4 my-4 focus:outline-none focus:border-transparent rounded-lg text-black' autocomplete='current-password' required placeholder='{% trans %}Password{% endtrans%}' aria-label='inputPassword'>
+			<input type='hidden' name='_csrf_token' value="{{ csrf_token('authenticate') }}">
+			<button class='bg-yellow-400 text-black text-center p-2 my-4 rounded-lg' type='submit'>
+				{% trans %}
+				Sign in
+				{% endtrans%}
+			</button>
+			<div class='flex item gap-2 justify-center my-4'>{% trans %}Dont have an account?
+				{% endtrans%}<a href="{{ path('app_register')}}" class='ml-2 underline text-yellow-400'>{% trans %}Create your account
+					{% endtrans %}</a>
+			</div>
+		</form>
+	</div>
+{% endblock %}
