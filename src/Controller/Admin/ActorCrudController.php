@@ -1,9 +1,14 @@
 <?php
 
-namespace App\Controller\Actor;
+namespace App\Controller\Admin;
 
 use App\Entity\Actor;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ActorCrudController extends AbstractCrudController
 {
@@ -12,14 +17,27 @@ class ActorCrudController extends AbstractCrudController
         return Actor::class;
     }
 
-    /*
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud->setPageTitle('index', 'Les acteurs')
+            ->setPageTitle('edit', 'Modifier un acteur')
+            ->setEntityLabelInPlural('Les acteurs')
+            ->setEntityLabelInSingular('un acteur')
+            ->setSearchFields(null);
+    }
+
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        yield TextField::new('name', 'Nom');
+        yield SlugField::new('slug')
+            ->setTargetFieldName('name')
+            ->hideOnIndex();
+        yield DateField::new('dateOfBirth', 'Date de naissance');
+        yield AssociationField::new('featImg', 'Photo')
+            ->hideOnIndex();
+        yield DateField::new('createdAt', 'Création')
+            ->hideOnForm();
+        yield DateField::new('updatedAt', 'Modification')
+            ->hideOnForm();
     }
-    */
 }

@@ -25,3 +25,8 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+
+# Images
+public/uploads/*
+!public/uploads/.gitignore

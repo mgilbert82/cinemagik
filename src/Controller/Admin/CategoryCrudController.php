@@ -1,9 +1,14 @@
 <?php
 
-namespace App\Controller\Category;
+namespace App\Controller\Admin;
 
 use App\Entity\Category;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ColorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class CategoryCrudController extends AbstractCrudController
 {
@@ -12,14 +17,25 @@ class CategoryCrudController extends AbstractCrudController
         return Category::class;
     }
 
-    /*
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud->setPageTitle('index', 'Les genres')
+            ->setPageTitle('edit', 'Modifier un genre')
+            ->setEntityLabelInPlural('Les genres')
+            ->setEntityLabelInSingular('un genre')
+            ->setSearchFields(null);
+    }
+
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        yield TextField::new('name', 'Nom');
+        yield SlugField::new('slug')
+            ->setTargetFieldName('name')
+            ->hideOnIndex();
+        yield ColorField::new('color', 'Couleur');
+        yield DateField::new('createdAt', 'Création')
+            ->hideOnForm();
+        yield DateField::new('updatedAt', 'Modification')
+            ->hideOnForm();
     }
-    */
 }
