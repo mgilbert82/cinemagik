@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+{% set categoryColor = post.category.color %}
+
+{% block title %}
+	{{post.title}}
+{% endblock %}
+
+{% block body %}
+	<div class='flex mx-auto p-10 items-stretch'>
+		<img src='/uploads/{{post.featImg.filename }}' alt='{{post.slug}}' class='w-1/2 object-cover rounded-tl-lg rounded-bl-lg'>
+		<div class='flex-2 p-6 bg-black rounded-tr-lg rounded-br-lg'>
+			<div class='flex grid-rows-1 justify-between items-center'>
+				<div class='flex-2 flex items-center my-4'>
+					<h1 class='text-left tracking-wider mr-4'>{{post.title}}</h1>
+				</div>
+				<div class='text-center rounded-2xl bg-red-600 p-2 text-sm'>
+					{{post.category.name}}
+				</div>
+			</div>
+			<div class='flex items-center gap-4 pb-4'>
+				<img src="{{asset('images/icons/love-ico.svg')}}" alt='love-icon'>
+				{{post.rate}}
+			</div>
+			{% if post.source %}
+				<div class='flex items-center gap-2'>
+					Vu :
+					<img src='/uploads/{{post.source.featImg.filename }}' alt='{{post.source.name}}' class='w-10 h-10 rounded-full object-cover'>
+				</div>
+			{% endif %}
+			<div class='grid grid-flow-row gap-2'>
+				<span>
+					De:
+					<a href='#' class='text-gray-400 ml-2 underline'>{{post.director.name}}</a>
+				</span>
+				<span>
+					Avec:
+					{% for actor in post.actors %}
+						<a href='#' class='text-gray-400 ml-2 underline'>{{actor.name}}</a>
+					{% endfor %}
+				</span>
+				<span class='flex items-center gap-2'>
+					<img src="{{asset('images/icons/movie-ico.svg')}}" alt=''>
+					<a href="{{post.trailerUrl}}" class='underline'>Voir la bande annonce</a>
+				</span>
+				<div class='mx-4 my-6 border-l border-yellow-400 pl-4 pr-4 '>
+					<p class='text-justify'>
+						{{post.content | raw }}
+					</p>
+				</div>
+				<div class='flex flex-col my-8 text-right border-r border-yellow-400 pr-4'>
+					<span>John Doe</span>
+					<span>{{post.createdAt|date('d M Y')}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

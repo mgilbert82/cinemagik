@@ -6,20 +6,11 @@
 {% block body %}
 
 	{# {{ dump(posts)}} #}
-	<div class='container'>
-		<div class='grid grid-cols-4 gap-2'>
-			{% for post in posts %}
-				<a href='#'>
-					<div class='m-2 flex flex-col gap-1 items-center'>
-						<img src='/uploads/{{post.featImg.filename }}' alt='{{post.slug}}' class='object-cover w-[120px] h-[200px] hover:opacity-60 rounded-lg'>
+	<div
+		class='container mx-auto'>
 
-						<h2 class='text-center'>{{ post.title}}</h2>
-						<span>{{post.category.name}}</span>
-						{# <span>{{post.user.username}}</span> #}
-						<span class='text-sm'>{{ post.releaseDate | date('d M Y') }}</span>
-					</div>
-				</a>
-			{% endfor %}
-		</div>
+		<!-- Post list -->
+		{% include 'post/postList.html.twig' %}
+		<!-- end post list -->
 	</div>
 {% endblock %}

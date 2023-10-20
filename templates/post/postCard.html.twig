@@ -1,0 +1,9 @@
+{% set post_detail = path('post_detail', {'slug':post.slug}) %}
+
+<a href='{{post_detail}}'>
+	<img src='/uploads/{{post.featImg.filename }}' alt='{{post.slug}}' class='h-auto max-w-full rounded-lg'>
+{# <h2 class='text-center'>{{ post.title}}</h2> #}
+	{# <span>{{post.category.name}}</span> #}
+	{# <span>{{post.user.username}}</span> #}
+	{# <span class='text-sm'>{{ post.releaseDate | date('d M Y') }}</span> #}
+</a>
