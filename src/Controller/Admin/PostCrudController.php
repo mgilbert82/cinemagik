@@ -54,12 +54,12 @@ class PostCrudController extends AbstractCrudController
             ->hideOnIndex();
         yield ChoiceField::new('type')
             ->setChoices([
-                'Film' => 'FILM',
-                'Série' => 'SERIE'
+                'MOVIE' => 'FILM',
+                'TVSHOW' => 'SERIE'
             ])
             ->renderAsBadges([
-                'FILM' => 'primary',
-                'SERIE' => 'success'
+                'MOVIE' => 'primary',
+                'TVSHOW' => 'success'
             ]);
         yield AssociationField::new('featImg', 'Affiche/image')
             ->hideOnIndex();
