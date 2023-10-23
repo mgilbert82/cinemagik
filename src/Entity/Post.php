@@ -62,6 +62,9 @@ class Post implements TimestampedInterface
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'posts')]
+    private ?User $user = null;
+
     public function __construct()
     {
         $this->actors = new ArrayCollection();
@@ -266,5 +269,17 @@ class Post implements TimestampedInterface
     public function __toString()
     {
         return $this->title;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }
