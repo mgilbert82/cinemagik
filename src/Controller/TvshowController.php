@@ -14,7 +14,7 @@ class TvshowController extends AbstractController
     {
         $tvShow = $postRepo->findBy(['type' => 'TVSHOW']);
 
-        return $this->render('tvshow/index.html.twig', [
+        return $this->render('tvshow/tvshowList.html.twig', [
             'posts' => $tvShow,
         ]);
     }

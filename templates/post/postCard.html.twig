@@ -1,7 +1,11 @@
 {% set post_detail = path('post_detail', {'slug':post.slug}) %}
 
+{# {{ dump(post.source)}} #}
 <a href='{{post_detail}}'>
-	<img src='/uploads/{{post.featImg.filename }}' alt='{{post.slug}}' class='h-auto max-w-full rounded-lg'>
+	{% if post.source %}
+		<img src='/uploads/{{post.source.featImg.filename }}' alt='{{post.source.name}}' class='absolute top-4 right-4 w-10 h-10 rounded-full object-cover shadow-lg shadow-black'>
+	{% endif %}
+	<img src='/uploads/{{post.featImg.filename }}' alt='{{post.slug}}' class='w-80 h-80 object-cover hover:opacity-80 rounded-lg'>
 {# <h2 class='text-center'>{{ post.title}}</h2> #}
 	{# <span>{{post.category.name}}</span> #}
 	{# <span>{{post.user.username}}</span> #}
