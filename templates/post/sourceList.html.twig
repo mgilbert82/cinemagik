@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plateforme -
+	{{ source|upper}}
+
+{% endblock %}
+{% block body %}
+	{# {{dump(posts)}} #}
+	{% include 'post/postList.html.twig' %}
+{% endblock %}

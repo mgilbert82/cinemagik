@@ -24,17 +24,14 @@ class PostController extends AbstractController
     }
 
     #[Route('/source/{slug}', name: 'post_source')]
-    public function getPostBySource($slug, ?Post $post, PostRepository $postRepository): Response
+    public function getPostBySource($slug, PostRepository $postRepository): Response
     {
-        if (!$post) {
-            return $this->redirectToRoute('app_home');
-        }
 
         $sourcePosts = $postRepository->getPostBySource($slug);
 
-
         return $this->render('post/sourceList.html.twig', [
             'posts' => $sourcePosts,
+            'source' => $slug
         ]);
     }
 }
