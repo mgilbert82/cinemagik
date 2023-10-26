@@ -44,34 +44,3 @@ h4 {
 h5 {
     font-size: 18px;
 }
-
-.navbar {
-    background-color: #1C1917;
-}
-
-#navBtn>a {
-    color: #FACC15;
-    font-family: 'Anton', sans-serif;
-    font-size: 20px;
-    letter-spacing: 1px;
-}
-
-#signBtn>a {
-    color: #1C1917;
-    background-color: #FACC15;
-    font-family: 'Anton', sans-serif;
-    font-size: 18px;
-    letter-spacing: 1px;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-#userBtn>a {
-    color: #1C1917;
-    background-color: #FACC15;
-    font-family: 'Anton', sans-serif;
-    font-size: 18px;
-    letter-spacing: 1px;
-    padding: 10px;
-    border-radius: 10px;
-}

@@ -7,13 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        anton: ["Anton", "sans-serif"],
+        lato: ["Lato", "sans-serif"],
+        limelight: ["Limelight", "sans-serif"],
+      },
       screens: {
         lg: "1024px",
       },
     },
   },
-  plugins: [
-    require("tw-elements/dist/plugin.cjs"),
-    require("@tailwindcss/forms"),
-  ],
+  plugins: [require("@tailwindcss/forms")],
 };

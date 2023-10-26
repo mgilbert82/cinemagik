@@ -16,10 +16,10 @@
 		{% endblock %}
 	</head>
 	<body>
-		<div class='min-h-screen flex flex-col'>
-			<header>
-				{% include 'components/navbar.html.twig' %}
-			</header>
+		<div
+			class='min-h-screen flex flex-col'>
+			<!-- Navigation -->
+			{% include 'components/navbar.html.twig' %}
 
 			<main class='flex-grow p-4'>
 				{% block body %}
@@ -31,8 +31,7 @@
 				{% include 'components/footer.html.twig' %}
 			</footer>
 
-			<!-- Tailwind Elements JavaScript -->
-			<script src='https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js'/>
+
 		</div>
 	</body>
 </html>

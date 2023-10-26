@@ -1,112 +1,197 @@
-<!-- Main navigation container -->
-<nav class='relative flex w-full flex-wrap items-center justify-between bg-[#1C1917] py-2 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-warm-600 lg:py-4' data-te-navbar-ref>
-	<div class='flex w-full flex-wrap items-center justify-between px-3'>
-		<div class='flex items-center justify-center gap-2'>
-			<a class='mx-2 my-1 flex items-center text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 lg:mb-0 lg:mt-0' href='{{path('app_home')}}'>
-				<img
-				class='' src='{{ asset('images/logo/cinemagik-logo.svg')}}' style='height: 40px' alt='TE Logo' loading='lazy'/>
-				<!-- Home link -->
-				<span class='my-4 pl-2 lg:my-0 lg:pl-2 lg:pr-1' data-te-nav-item-ref>
-					<a class='text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400' aria-current='page' href='{{ path('app_home')}}' data-te-nav-link-ref id='blog-title'>CINEMAGIK</a>
-				</span>
-			</a>
-		</div>
-
-		<!-- Hamburger button for mobile view -->
-		<button
-			class='block border-0 bg-transparent px-2 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden' type='button' data-te-collapse-init data-te-target='#navbarSupportedContent4' aria-controls='navbarSupportedContent4' aria-expanded='false' aria-label='Toggle navigation'>
-			<!-- Hamburger icon -->
-			<span class='[&>svg]:w-7'>
-				<svg xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' fill='currentColor' class='h-7 w-7'>
-					<path fill-rule='evenodd' d='M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z' clip-rule='evenodd'/>
-				</svg>
-			</span>
+<!-- component -->
+<nav aria-label='navbar' class='relative px-4 py-4 flex justify-between items-center bg-[#1C1917]'>
+	<a class='text-3xl font-bold leading-none flex items-center' href='{{path('app_home')}}'>
+		<img src="{{asset('images/logo/cinemagik-logo.svg')}}" alt='logo-cinemagik' class='w-8 h-8'>
+		<span class='text-white text-xl ml-2 font-limelight'>
+			CINEMAGIK
+		</span>
+	</a>
+	<div class='lg:hidden'>
+		<button class='navbar-burger flex items-center text-yellow-400 p-3'>
+			<svg class='block h-4 w-4 fill-current' viewbox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
+				<title>Mobile menu</title>
+				<path d='M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z'></path>
+			</svg>
 		</button>
+	</div>
+	<ul class='hidden z-50 absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6'>
+		<li>
+			<a class='text-xl font-anton text-yellow-400 uppercase tracking-wider border-b border-[#1C1917] hover:border-b hover:border-red-600' href='{{path('app_movies')}}'>Films</a>
+		</li>
+		<li>
+			<a class='text-xl font-anton text-yellow-400 uppercase tracking-wider border-b border-[#1C1917] hover:border-b hover:border-red-600' href='{{path('app_tvshow')}}'>Séries</a>
+		</li>
 
-		<!-- Collapsible navbar container -->
-		<div
-			class='!visible mt-2 hidden flex-grow basis-[100%] mx-auto lg:mt-0 lg:!flex lg:basis-auto' id='navbarSupportedContent4' data-te-collapse-item>
-			<!-- Left links -->
-			<ul class='list-style-none mr-auto flex flex-col pl-0 lg:mt-1 lg:flex-row' data-te-navbar-nav-ref></ul>
-
-			<div class='flex lg:flex-row lg:mr-10 sm:flex-col md:gap-4 items-center'>
-				<span data-te-ripple-init data-te-ripple-color='light' class='' id='navBtn'>
-					<a href='{{ path('app_movies')}}' class=''>
-						FILMS
-					</a>
-				</span>
-				<span data-te-ripple-init data-te-ripple-color='light' class='' id='navBtn'>
-					<a href='{{ path('app_tvshow') }}'>
-						SERIES
-					</a>
-				</span>
-				<!-- Dropdown SVOD-->
-				<div class='relative mx-auto' data-te-dropdown-ref id='navBtn'>
-					<a class='flex items-center' href='#' type='button' data-te-dropdown-toggle-ref aria-expanded='false'>
-						SVOD
-						<span class='mx-2 w-2'>
-							<svg xmlns='http://www.w3.org/2000/svg' viewbox='0 0 20 20' fill='#DC2626' class='h-5 w-5'>
-								<path fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/>
-							</svg>
-						</span>
-					</a>
-					<ul class='absolute z-[1000] float-left mt-5 hidden min-w-max list-none overflow-hidden border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-[#1C1917] [&[data-te-dropdown-show]]:block' aria-labelledby='dropdownMenuButton2' data-te-dropdown-menu-ref>
-						<li>
-							<a class='block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal hover:bg-yellow-400 hover:text-[#1C1917] active:no-underline disabled:pointer-events-none disabled:bg-transparent  dark:text-neutral-200' href='#' data-te-dropdown-item-ref>Amazon Prime</a>
+		<li>
+			<div class='flex flex-col items-center justify-between'>
+				<div class='group inline-block relative w-full'>
+					<button class='w-full inline-flex items-center'>
+						<span class='text-xl font-anton text-yellow-400 uppercase tracking-wider'>SVOD</span>
+						<svg class='fill-current h-4 w-4 text-red-600' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 20 20'>
+							<path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/>
+						</svg>
+					</button>
+					<ul class='absolute hidden text-white group-hover:block rounded-lg'>
+						<li class=''>
+							<a class='block bg-[#1C1917] hover:bg-white hover:text-black py-2 px-4 whitespace-no-wrap' href='#'>
+								Disney+</a>
 						</li>
-						<li>
-							<a class='block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal hover:bg-yellow-400 hover:text-[#1C1917] active:no-underline disabled:pointer-events-none disabled:bg-transparent  dark:text-neutral-200' href='#' data-te-dropdown-item-ref>Disney +</a>
+						<li class=''>
+							<a class='block bg-[#1C1917] hover:bg-white hover:text-black py-2 px-4 whitespace-no-wrap' href='#'>
+								Amazon Prime</a>
 						</li>
-						<li>
-							<a class='block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal hover:bg-yellow-400 hover:text-[#1C1917] active:no-underline disabled:pointer-events-none disabled:bg-transparent  dark:text-neutral-200' href='#' data-te-dropdown-item-ref>Netflix</a>
+						<li class=''>
+							<a class='block bg-[#1C1917] hover:bg-white hover:text-black py-2 px-4 whitespace-no-wrap' href='#'>
+								Netflix
+							</a>
 						</li>
 					</ul>
 				</div>
-				{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-					<!-- End Dropdown SVOD -->
-					<span type='button' data-te-ripple-init data-te-ripple-color='light' class='mx-auto' id='signBtn'>
-						<a href='{{ path('app_login')}}'>
-							{% trans %}
-							Login
-							{% endtrans %}
+			</div>
+		</li>
+	</ul>
+	{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+
+		<!-- Connection Button -->
+		<a class='hidden lg:inline-block py-2 px-6 bg-yellow-400 text-black font-bold rounded-xl transition duration-200' href='{{path('app_login')}}'>Connexion</a>
+
+	{% else %}
+
+		<!-- Dropdown User -->
+		<div class='hidden lg:flex z-10'>
+			<div class='group inline-block relative'>
+				<button class='bg-yellow-400 text-black py-2 px-4 inline-flex items-center rounded-tr-2xl rounded-tl-2xl'>
+					<span class='mr-1'>Hey
+						{{app.user.username }}!</span>
+					<svg class='fill-current h-4 w-4' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 20 20'>
+						<path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/>
+					</svg>
+				</button>
+				<ul class='absolute hidden text-black group-hover:block'>
+					<li class=''>
+						<a class='bg-yellow-400 hover:bg-white hover:text-black py-2 px-4 whitespace-no-wrap flex items-center gap-2' href='#'>
+							<img src='{{ asset('images/icons/user-ico.svg')}}' alt='user-icon' class='w-4 h-4'>
+							Compte</a>
+					</li>
+					<li class=''>
+						<a class='bg-yellow-400 hover:bg-white hover:text-black py-2 px-4 whitespace-no-wrap flex items-center gap-2' href='#'>
+							<img src='{{ asset('images/icons/dashboard-ico.svg')}}' alt='dashboard-icon' class='w-4 h-4'>
+							Blog</a>
+					</li>
+					<li class=''>
+						<a class='bg-yellow-400 hover:bg-white hover:text-black py-2 px-4 whitespace-no-wrap flex items-center gap-2 rounded-bl-2xl rounded-br-2xl' href='{{path('app_logout')}}'>
+							<img src='{{ asset('images/icons/logout-ico.svg')}}' alt='logout-icon' class='w-4 h-4'>
+							Déconnexion
 						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- End Dropdown User -->
+		{% endif %}
+
+	</nav>
+
+	<!-- Responsive Menu -->
+	<div class='navbar-menu relative z-50 hidden w-full'>
+		<nav
+			aria-label='menu-bar' class='fixed top-0 left-0 bottom-0 flex flex-col w-full py-6 px-6 bg-black border-r overflow-y-auto'>
+			<!-- Logo and title -->
+			<div class='flex items-center justify-between mb-8'>
+				<a class='text-3xl font-bold leading-none flex items-center' href="{{path('app_home')}}">
+					<img src="{{asset('images/logo/cinemagik-logo.svg')}}" alt='logo-cinemagik' class='w-8 h-8'>
+					<span class='text-white text-xl ml-2 font-limelight'>
+						CINEMAGIK
 					</span>
-				{% else %}
-					<!-- Dropdown User-->
-					<div class='relative mx-auto' data-te-dropdown-ref id='userBtn'>
-						<a class='flex items-center px-6 pb-2 pt-2.5' href='#' type='button' data-te-dropdown-toggle-ref aria-expanded='false'>
-							Hello
-							{{ app.user.username }}
-							<span class='mx-2 w-2'>
-								<svg xmlns='http://www.w3.org/2000/svg' viewbox='0 0 20 20' fill='#DC2626' class='h-5 w-5'>
-									<path fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/>
-								</svg>
-							</span>
-						</a>
-						<ul class='absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden mt-5 border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block' aria-labelledby='dropdownMenuButton2' data-te-dropdown-menu-ref>
-							<li>
-								<a class='flex gap-2 w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal hover:bg-yellow-400 hover:text-[#1C1917] active:no-underline disabled:pointer-events-none disabled:bg-transparent  dark:text-neutral-200' href='#' data-te-dropdown-item-ref>
-									<img src='{{ asset('images/icons/user-ico.svg')}}' alt='user-icon'>
-									Mon compte
-								</a>
+				</a>
+				<!-- Close Button -->
+				<button class='navbar-close'>
+					<svg class='h-6 w-6 text-yellow-400 cursor-pointer hover:text-white' xmlns='http://www.w3.org/2000/svg' fill='none' viewbox='0 0 24 24' stroke='currentColor'>
+						<path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 18L18 6M6 6l12 12'></path>
+					</svg>
+				</button>
+			</div>
+			<!-- navbar Links -->
+			<div>
+				<ul>
+					<li class='mb-1'>
+						<a class='block p-4 font-anton text-xl tracking-wider uppercase text-yellow-400 border-b border-black hover:border-b-red-600' href='{{path('app_movies')}}'>Films</a>
+					</li>
+					<li class='mb-1'>
+						<a class='block p-4 font-anton text-xl tracking-wider uppercase text-yellow-400 border-b border-black hover:border-b-red-600' href='{{path('app_tvshow')}}'>Séries</a>
+					</li>
+				</ul>
+				<div class='z-10 flex flex-col items-center justify-between'>
+					<div class='group inline-block relative w-full'>
+						<button class='w-full bg-yellow-400 text-black py-2 px-4 inline-flex items-center rounded-tr-2xl rounded-tl-2xl'>
+							<span class='block p-4 font-anton text-xl tracking-wider uppercase text-yellow-400'>SVOD</span>
+							<svg class='fill-current h-4 w-4' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 20 20'>
+								<path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/>
+							</svg>
+						</button>
+						<ul class='absolute hidden text-black group-hover:block'>
+							<li class=''>
+								<a class='bg-yellow-400 hover:bg-white hover:text-black py-2 px-4 whitespace-no-wrap flex items-center gap-2' href='#'>
+									<img src='{{ asset('images/icons/user-ico.svg')}}' alt='user-icon' class='w-4 h-4'>
+									Compte</a>
 							</li>
-							<li>
-								<a class='flex gap-2 w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal hover:bg-yellow-400 hover:text-[#1C1917] active:no-underline disabled:pointer-events-none disabled:bg-transparent  dark:text-neutral-200' href='#' data-te-dropdown-item-ref>
-									<img src='{{ asset('images/icons/dashboard-ico.svg')}}' alt='dashboard-icon'>
-									Tableau de bord
-								</a>
+							<li class=''>
+								<a class='bg-yellow-400 hover:bg-white hover:text-black py-2 px-4 whitespace-no-wrap flex items-center gap-2' href='#'>
+									<img src='{{ asset('images/icons/dashboard-ico.svg')}}' alt='dashboard-icon' class='w-4 h-4'>
+									Blog</a>
 							</li>
-							<li>
-								<a class='flex gap-2 w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal hover:bg-yellow-400 hover:text-[#1C1917] active:no-underline disabled:pointer-events-none disabled:bg-transparent  dark:text-neutral-200' href='{{path('app_logout')}}' data-te-dropdown-item-ref>
-									<img src='{{ asset('images/icons/logout-ico.svg')}}' alt='logout-icon'>
+							<li class=''>
+								<a class='bg-yellow-400 hover:bg-white hover:text-black py-2 px-4 whitespace-no-wrap flex items-center gap-2 rounded-bl-2xl rounded-br-2xl' href='{{path('app_logout')}}'>
+									<img src='{{ asset('images/icons/logout-ico.svg')}}' alt='logout-icon' class='w-4 h-4'>
 									Déconnexion
 								</a>
 							</li>
 						</ul>
 					</div>
-					<!-- End Dropdown User -->
-				{% endif %}
-			</div>
+				</div>
+				<!-- footer -->
+				<div class='w-full'>
+					<div class='flex flex-col items-center justify-between'>
+						{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+
+							<a class='block w-full px-4 py-3 mb-2 leading-loose text-sm text-center text-black font-semibold bg-yellow-400 rounded-xl' href='{{path('app_login')}}'>Connexion</a>
+
+						{% else %}
+
+							<!-- Dropdown User -->
+							<div class='z-10 flex flex-col items-center justify-between'>
+								<div class='group inline-block relative w-full'>
+									<button class='w-full bg-yellow-400 text-black py-2 px-4 inline-flex items-center rounded-tr-2xl rounded-tl-2xl'>
+										<span class='mr-1'>Hey
+											{{app.user.username }}!</span>
+										<svg class='fill-current h-4 w-4' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 20 20'>
+											<path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/>
+										</svg>
+									</button>
+									<ul class='absolute hidden text-black group-hover:block'>
+										<li class=''>
+											<a class='bg-yellow-400 hover:bg-white hover:text-black py-2 px-4 whitespace-no-wrap flex items-center gap-2' href='#'>
+												<img src='{{ asset('images/icons/user-ico.svg')}}' alt='user-icon' class='w-4 h-4'>
+												Compte</a>
+										</li>
+										<li class=''>
+											<a class='bg-yellow-400 hover:bg-white hover:text-black py-2 px-4 whitespace-no-wrap flex items-center gap-2' href='#'>
+												<img src='{{ asset('images/icons/dashboard-ico.svg')}}' alt='dashboard-icon' class='w-4 h-4'>
+												Blog</a>
+										</li>
+										<li class=''>
+											<a class='bg-yellow-400 hover:bg-white hover:text-black py-2 px-4 whitespace-no-wrap flex items-center gap-2 rounded-bl-2xl rounded-br-2xl' href='{{path('app_logout')}}'>
+												<img src='{{ asset('images/icons/logout-ico.svg')}}' alt='logout-icon' class='w-4 h-4'>
+												Déconnexion
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- End Dropdown User -->
+						{% endif %}
+					</div>
+				</div>
+			</nav>
 		</div>
-	</div>
-</nav>
+
+		<script src="{{ asset('js/navbar.js') }}"></script>
