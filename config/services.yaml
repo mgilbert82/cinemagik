@@ -27,9 +27,3 @@ services:
   App\EventListener\UploadListener:
     arguments:
       - "%kernel.project_dir%/public/uploads"
-    tags:
-      - {
-          name: kernel.event_listener,
-          event: vich_uploader.pre_upload,
-          method: onVichUploaderPreUpload,
-        }

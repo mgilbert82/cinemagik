@@ -26,29 +26,44 @@
 					<img src='/uploads/{{post.source.featImg.filename }}' alt='{{post.source.name}}' class='w-10 h-10 rounded-full object-cover'>
 				</div>
 			{% endif %}
-			<div class='grid grid-flow-row gap-2'>
+			<div
+				class='grid grid-flow-row gap-2'>
+				<!-- Director -->
 				<span>
 					De:
 					<a href='#' class='text-gray-400 ml-2 underline'>{{post.director.name}}</a>
 				</span>
-				<span>
+				<!-- Actors -->
+				<div class='mb-2'>
 					Avec:
 					{% for actor in post.actors %}
 						<a href='#' class='text-gray-400 ml-2 underline'>{{actor.name}}</a>
 					{% endfor %}
-				</span>
-				<span class='flex items-center gap-2'>
+				</div>
+				<!-- post details-->
+				<div class='flex items-center gap-2 my-2'>
 					<img src="{{asset('images/icons/movie-ico.svg')}}" alt=''>
 					<a href="{{post.trailerUrl}}" class='underline'>Voir la bande annonce</a>
-				</span>
+				</div>
+				<!-- Post Content -->
 				<div class='mx-4 my-6 border-l border-yellow-400 pl-4 pr-4 '>
-					<p class='text-justify'>
+					<p class='text-justify text-lg'>
 						{{post.content | raw }}
 					</p>
 				</div>
-				<div class='flex flex-col my-8 text-right border-r border-yellow-400 pr-4'>
-					<span>{{post.user.username}}</span>
-					<span>{{post.createdAt|date('d M Y')}}</span>
+				<div class='my-8 border-r border-yellow-400 pr-4'>
+					<div class='flex flex-row items-center gap-4 float-right text-sm'>
+
+						<img src='/uploads/{{post.user.avatar.filename}}' alt='user-avatar' class='rounded-full w-10 h-10 object-cover object-center border-2 border-yellow-400'>
+						<div class='flex flex-col gap-1'>
+							<span>
+								{{post.user.username}}
+							</span>
+							<span>
+								{{post.createdAt|date('d M Y')}}
+							</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

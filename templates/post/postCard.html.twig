@@ -1,14 +1,13 @@
 {% set post_detail = path('post_detail', {'slug':post.slug}) %}
-
 <a href='{{post_detail}}'>
 	<img src='/uploads/{{post.featImg.filename }}' alt='{{post.slug}}' class='w-full h-40 object-cover object-top hover:opacity-80 rounded-tl-lg rounded-tr-lg'>
 	<div class='bg-black rounded overflow-hidden shadow-lg grid grid-flow-rows rounded-bl-lg rounded-br-lg'>
 		<div class='px-6 py-4'>
-			<a class='text-sm mb-4 text-neutral-400 flex items-center gap-2' href='#'>
-				<img src='/uploads/harrison-ford-a-48ad5108-e163-439f-9d92-d94018087639.jpg' alt='user-avatar' class='rounded-full w-10 h-10 object-cover object-center'>
-				<span class='underline'>{{post.user.username}}</span>
+			<a class='text-sm mb-4 text-neutral-300 flex items-center gap-2' href='#'>
+				<img src='/uploads/{{post.user.avatar.filename}}' alt='user-avatar' class='rounded-full w-10 h-10 object-cover object-center border-2 border-yellow-400'>
+				<span class='underline font-semibold'>{{post.user.username}}</span>
 			</a>
-			<h2 class='font-bold text-xl mb-2 tracking-wide'>{{ post. title}}</h2>
+			<h2 class='font-bold text-xl mb-2 tracking-wide'>{{ post.title}}</h2>
 			<p class='text-gray-300 text-base tracking-wide'>
 				{{post.featText| raw | slice(0,130)}}
 			</p>

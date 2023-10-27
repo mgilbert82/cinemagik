@@ -19,9 +19,11 @@
 		<div
 			class='min-h-screen flex flex-col'>
 			<!-- Navigation -->
-			{% include 'components/navbar.html.twig' %}
+			<header class='w-full fixed shadow-lg z-50'>
+				{% include 'components/navbar.html.twig' %}
+			</header>
 
-			<main class='flex-grow p-4'>
+			<main class='flex-grow p-4 mt-10 pt-10'>
 				{% block body %}
 					<!-- Content -->
 				{% endblock %}

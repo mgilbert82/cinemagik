@@ -70,14 +70,14 @@
 				</button>
 				<ul class='absolute hidden text-black group-hover:block'>
 					<li class=''>
-						<a class='bg-neutral-200 hover:bg-white py-2 px-4 whitespace-no-wrap flex items-center gap-2' href='#'>
+						<a class='bg-neutral-200 hover:bg-white py-2 px-4 whitespace-no-wrap flex items-center gap-2' href='{{path('app_profile')}}'>
 							<img src='{{ asset('images/icons/user-ico.svg')}}' alt='user-icon' class='w-4 h-4'>
 							Compte</a>
 					</li>
 					<li class=''>
-						<a class='bg-neutral-200 hover:bg-white py-2 px-4 whitespace-no-wrap flex items-center gap-2' href='#'>
+						<a class='bg-neutral-200 hover:bg-white py-2 px-4 whitespace-no-wrap flex items-center gap-2' href='/admin'>
 							<img src='{{ asset('images/icons/dashboard-ico.svg')}}' alt='dashboard-icon' class='w-4 h-4'>
-							Blog</a>
+							Admin</a>
 					</li>
 					<li class=''>
 						<a class='bg-neutral-200 hover:bg-white py-2 px-4 whitespace-no-wrap flex items-center gap-2 rounded-bl-2xl rounded-br-2xl' href='{{path('app_logout')}}'>
@@ -166,7 +166,7 @@
 								</button>
 								<ul class='absolute hidden text-black group-hover:block w-full'>
 									<li class=''>
-										<a class='bg-neutral-200 hover:bg-white py-2 px-4 whitespace-no-wrap flex items-center gap-2 rounded-tl-lg rounded-tr-lg' href='#'>
+										<a class='bg-neutral-200 hover:bg-white py-2 px-4 whitespace-no-wrap flex items-center gap-2 rounded-tl-lg rounded-tr-lg' href='{{ path('app_profile') }}'>
 											<img src='{{ asset('images/icons/user-ico.svg')}}' alt='user-icon' class='w-4 h-4'>
 											Compte</a>
 									</li>
@@ -176,7 +176,7 @@
 											Blog</a>
 									</li>
 									<li class=''>
-										<a class='bg-neutral-200 hover:bg-white  py-2 px-4 whitespace-no-wrap flex items-center gap-2 rounded-bl-lg rounded-br-lg' href='{{path('app_logout')}}'>
+										<a class='bg-neutral-200 hover:bg-white  py-2 px-4 whitespace-no-wrap flex items-center gap-2 rounded-bl-lg rounded-br-lg' href='{{ path('app_logout') }}'>
 											<img src='{{ asset('images/icons/logout-ico.svg')}}' alt='logout-icon' class='w-4 h-4'>
 											Déconnexion
 										</a>
