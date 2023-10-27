@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du profil de
+	{{ app.user.username }}
+{% endblock %}
+
+{% block body %}
+
+
+	<div class='w-1/2 mx-auto px-4'>
+		<h1 class='mb-4'>{% trans %}Modification du profil de{% endtrans %}
+			{{ app.user.username }}</h1>
+
+		<div class='flex flex-col gap-4'>
+			<div class='grid grid-flow-rows gap-2 mb-4  bg-black p-4 rounded-lg'>
+				<h2>Identifiants</h2>
+				{{ form_start(form) }}
+				{{ form_row(form.username) }}
+				{{ form_row(form.email) }}
+				<button type='submit' class='bg-yellow-400 text-black text-center font-semibold p-2 my-4 rounded-lg uppercase'>{% trans %}update{% endtrans %}</button>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+</div>{% endblock %}

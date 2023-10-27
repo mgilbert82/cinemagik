@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil
+{% endblock %}
+
+{% block body %}
+
+	<div
+		class='w-1/2 mx-auto px-4'>
+		<!-- Message flash-->
+		{% for message in app.flashes('error') %}
+			<div class='inline-flex items-center gap-4 rounded-md bg-red-600 px-2 py-1 text-sm font-sm my-4 shadow-lg'>
+				<span class='text-red-50 text-center'>{{message}}!!</span>
+			</div>
+		{% endfor %}
+		{% for message in app.flashes('success') %}
+			<div class='inline-flex items-center gap-4 rounded-md bg-green-600 px-2 py-1 text-sm font-sm my-4 shadow-lg'>
+				<span class='text-red-50 text-center'>{{message}}!!</span>
+			</div>
+		{% endfor %}
+
+		<h1 class='mb-4'>{% trans %}Profil de{% endtrans %}
+			{{ app.user.username }}</h1>
+
+		<div class='flex flex-col gap-4'>
+			<div class='grid grid-flow-rows gap-2 mb-4  bg-black p-4 rounded-lg'>
+				<h2>Identifiants</h2>
+				<span>
+					Nom d'utilisateur:
+					{{ app.user.username}}
+				</span>
+				<span>
+					Email:
+					{{ app.user.email }}
+				</span>
+				<div class='flex gap-6 justify-between w-full my-4'>
+					<a href='{{ path('app_edit_profile')}}' class='w-full rounded-xl bg-yellow-400 text-black text-anton font-semibold p-2 text-center'>Modifier le profil</a>
+					<a href='{{ path('app_edit_password')}}' class='w-full rounded-xl bg-yellow-400 text-black text-anton font-semibold p-2 text-center'>Modifier le mot de passe</a>
+				</div>
+			</div>
+			{% if app.user.posts is not empty %}
+				<div class='grid grid-flow-rows gap-2 mb-4  bg-black p-4 rounded-lg'>
+					<h2>Les articles ({{app.user.posts|length }})</h2>
+					<ul class='list-disc px-4'>
+						{% for post in app.user.posts %}
+							<li>
+								<a href='/post/{{post.slug}}' class='font-boldunderline'>{{post.title}}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</div>
+			{% if app.user.comments|length > 0 %}
+				<div class='grid grid-flow-rows gap-2 mb-4  bg-black p-4 rounded-lg'>
+					<h2>Les commentaires ({{ user.comments|length }})</h2>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

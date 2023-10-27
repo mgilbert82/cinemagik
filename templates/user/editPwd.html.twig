@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du profil de
+	{{ app.user.username }}
+{% endblock %}
+
+{% block body %}
+
+
+	<div
+		class='w-1/2 mx-auto px-4'>
+		<!-- Message flash-->
+		{% for message in app.flashes('error') %}
+			<div class='inline-flex items-center rounded-md bg-red-600 px-2 py-1 text-sm font-sm my-4 shadow-lg'>
+				<span class='text-red-50 text-center'>{{error}}!!</span>
+			</div>
+		{% endfor %}
+		{% for message in app.flashes('success') %}
+			<div class='inline-flex items-center rounded-md bg-green-600 px-2 py-1 text-sm font-sm my-4 shadow-lg'>
+				<span class='text-red-50 text-center'>{{success}}!!</span>
+			</div>
+		{% endfor %}
+
+		<h1 class='mb-4 text-center'>{% trans %}Modification du mot de passe de
+			{% endtrans %}
+			{{ app.user.username }}</h1>
+
+		<div class='w-1/2 mx-auto bg-black p-6 rounded-lg'>
+			{{ form_errors(passwordForm) }}
+
+			{{form_start(passwordForm)}}
+			{{form_row(passwordForm.plainPassword)}}
+			{{form_row(passwordForm.submit)}}
+			{{form_end(passwordForm)}}
+		</div>
+	</div>
+</div>{% endblock %}

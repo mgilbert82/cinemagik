@@ -3,19 +3,28 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\Type\EditPasswordType;
+use App\Form\Type\EditProfileType;
 use App\Form\Type\RegistrationFormType;
+use App\Form\Type\UserAvatarType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends AbstractController
 {
+    public function __construct(
+        public EntityManagerInterface $entityManager,
+        public UserPasswordHasherInterface $passwordHasher,
+    ) {
+    }
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function register(Request $request): Response
     {
 
         $user = new User();
@@ -25,14 +34,14 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
-                $userPasswordHasher->hashPassword(
+                $this->passwordHasher->hashPassword(
                     $user,
                     $form->get('plainPassword')->getData()
                 )
             );
 
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
 
             return $this->redirectToRoute('app_home');
         }
@@ -45,10 +54,6 @@ class UserController extends AbstractController
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        if ($this->getUser()) {
-            return $this->redirectToRoute('app_home');
-        }
-
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
@@ -61,5 +66,60 @@ class UserController extends AbstractController
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+    #[Route('/profile', name: 'app_profile')]
+    public function index()
+    {
+        return $this->render('user/userProfile.html.twig', []);
+    }
+
+    #[Route('/profile/edit', name: 'app_edit_profile')]
+    public function editProfile(Request $request)
+    {
+        $user = $this->getUser();
+        $form = $this->createForm(EditProfileType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+
+            $this->addFlash('success', 'Profil mis à jour');
+
+            return $this->redirectToRoute('app_profile');
+        }
+
+        return $this->render('user/editProfile.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/profile/pwd', name: 'app_edit_password')]
+    public function editPassword(Request $request): Response
+    {
+        $user = $this->entityManager->find(User::class, $this->getUser());
+
+        $form = $this->createForm(EditPasswordType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $newPassword = $form->get('plainPassword')->getData();
+            $hashedPassword = $this->passwordHasher->hashPassword($user, $newPassword);
+
+            $user->setPassword($hashedPassword);
+
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+
+            $this->addFlash('success', 'Mot de passe mis à jour');
+
+            return $this->redirectToRoute('app_profile');
+        }
+
+        return $this->render('user/editPwd.html.twig', [
+            'passwordForm' => $form
+        ]);
     }
 }

@@ -38,6 +38,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Post::class)]
     private Collection $posts;
 
+    #[ORM\ManyToOne]
+    private ?Media $avatar = null;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -182,6 +185,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $post->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAvatar(): ?Media
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(?Media $avatar): static
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }
