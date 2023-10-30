@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Films par plateforme |
+	{{ source.name}}
+{% endblock %}
+
+{% block body %}
+	<div class='grid grid-cols-4 gap-4 mx-10 my-10 items-center'>
+		<div class='col-span-1'>
+			<img src='/uploads/{{source.featImg.filename}}' alt='' class=' object-contain'>
+		</div>
+		<div class='col-span-3 w-full'>
+			<p>{{source.featText}}</p>
+		</div>
+	</div>
+	{% include 'post/postList.html.twig' %}
+{% endblock %}

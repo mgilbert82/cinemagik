@@ -31,14 +31,16 @@
 				<!-- Director -->
 				<span>
 					De:
-					<a href='#' class='text-gray-400 ml-2 underline'>{{post.director.name}}</a>
+					<a href='{{ path('director_posts', {'slug': post.director.slug }) }}' class='text-gray-400 ml-2 underline'>{{post.director.name}}</a>
 				</span>
 				<!-- Actors -->
 				<div class='mb-2'>
 					Avec:
-					{% for actor in post.actors %}
-						<a href='#' class='text-gray-400 ml-2 underline'>{{actor.name}}</a>
-					{% endfor %}
+					{% if post.actors is not null %}
+						{% for actor in post.actors %}
+							<a href='{{ path('actor_posts', {'slug': actor.slug }) }}' class='text-gray-400 ml-2 underline'>{{ actor.name }}</a>
+						{% endfor %}
+					{% endif %}
 				</div>
 				<!-- post details-->
 				<div class='flex items-center gap-2 my-2'>

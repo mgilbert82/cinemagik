@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Actor;
 use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -30,6 +31,16 @@ class PostRepository extends ServiceEntityRepository
             ->getQuery();
 
         return $query->getResult();
+    }
+
+    public function findByActors(Actor $actor)
+    {
+        return $this->createQueryBuilder('p')
+            ->join('p.actors', 'a')
+            ->where('a = :actor')
+            ->setParameter('actor', $actor)
+            ->getQuery()
+            ->getResult();
     }
 
     //    /**
