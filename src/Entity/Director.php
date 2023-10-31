@@ -38,6 +38,9 @@ class Director implements TimestampedInterface
     #[ORM\OneToMany(mappedBy: 'director', targetEntity: Post::class)]
     private Collection $posts;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $featText = null;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -152,5 +155,17 @@ class Director implements TimestampedInterface
     public function __toString(): string
     {
         return $this->name;
+    }
+
+    public function getFeatText(): ?string
+    {
+        return $this->featText;
+    }
+
+    public function setFeatText(?string $featText): static
+    {
+        $this->featText = $featText;
+
+        return $this;
     }
 }

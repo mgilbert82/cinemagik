@@ -38,6 +38,9 @@ class Actor implements TimestampedInterface
     #[ORM\ManyToMany(targetEntity: Post::class, mappedBy: 'actors')]
     private Collection $posts;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $featText = null;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -149,5 +152,17 @@ class Actor implements TimestampedInterface
     public function __toString(): string
     {
         return $this->name;
+    }
+
+    public function getFeatText(): ?string
+    {
+        return $this->featText;
+    }
+
+    public function setFeatText(?string $featText): static
+    {
+        $this->featText = $featText;
+
+        return $this;
     }
 }

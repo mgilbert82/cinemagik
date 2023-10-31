@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MoviesController extends AbstractController
 {
-    #[Route('/movies', name: 'app_movies')]
+    #[Route('/films', name: 'app_movies')]
     public function index(PostRepository $postRepo): Response
     {
 

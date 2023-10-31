@@ -2,10 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Director;
 use App\Entity\Post;
-use App\Entity\Source;
-use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

@@ -1,26 +1,62 @@
 {% set post_detail = path('post_detail', {'slug':post.slug}) %}
-<a href='{{post_detail}}'>
-	<img src='/uploads/{{post.featImg.filename }}' alt='{{post.slug}}' class='w-full h-40 object-cover object-top hover:opacity-80 rounded-tl-lg rounded-tr-lg'>
-	<div class='bg-black rounded overflow-hidden shadow-lg grid grid-flow-rows rounded-bl-lg rounded-br-lg'>
-		<div class='px-6 py-4'>
-			<a class='text-sm mb-4 text-neutral-300 flex items-center gap-2' href='#'>
-				<img src='/uploads/{{post.user.avatar.filename}}' alt='user-avatar' class='rounded-full w-10 h-10 object-cover object-center border-2 border-yellow-400'>
-				<span class='underline font-semibold'>{{post.user.username}}</span>
-			</a>
-			<a href="{{post_detail}}">
-				<h2 class='font-bold text-xl mb-2 tracking-wide underline'>{{ post.title}}</h2>
-			</a>
-			<p class='text-gray-300 text-base tracking-wide'>
-				{{post.featText| raw | slice(0,130)}}
-				...
-			</p>
-		</div>
-		<div class='p-4 border-t border-yellow-400 flex justify-between'>
-			<span class='text-center rounded-2xl bg-red-600 p-2 text-sm'>{{post.category.name}}</span>
-			<span class='flex items-center gap-2'>
-				{{post.rate}}
-				<img src="{{asset('images/icons/love-ico.svg')}}" alt='love-icon'>
-			</span>
+
+{# <div class='flex flex-col'>
+	<div class=''>
+		<img src='/uploads/{{post.featImg.filename }}' alt='{{post.slug}}' class='w-full h-40 object-cover object-top hover:opacity-80 rounded-tl-lg rounded-bl-lg'>
+	</div>
+
+	<div class='bg-black shadow-lg rounded-br-lg rounded-tr-lg flex-1'>
+		<div class='px-4 py-2 flex flex-col justify-between'>
+			<div class='flex flex-col gap-2 py-2'>
+				<a href="{{post_detail}}">
+					<h3 class='font-bold mb-2 tracking-wide underline'>{{ post.title}}</h3>
+				</a>
+				<a class='text-sm mb-4 text-neutral-300 flex items-center gap-2' href='#'>
+					<img src='/uploads/{{post.user.avatar.filename}}' alt='user-avatar' class='rounded-full w-10 h-10 object-cover object-center border-2  border-neutral-400'>
+					<span class='underline font-semibold'>{{post.user.username}}</span>
+				</a>
+
+				<p class='text-gray-300 text-base tracking-wide'>
+					{{post.content | striptags | slice(0,180)}}
+					...
+				</p>
+			</div>
+			<div class='p-4 border-t border-yellow-400 flex justify-between my-4'>
+				<span class='text-center rounded-2xl bg-red-600 p-2 text-sm'>{{post.category.name}}</span>
+				<span class='flex items-center gap-2'>
+					{{post.rate}}
+					<img src="{{asset('images/icons/love-ico.svg')}}" alt='love-icon'>
+				</span>
+			</div>
 		</div>
 	</div>
-</a>
+</div> #}
+
+<div class='max-w-sm w-full lg:max-w-full lg:flex shadow-lg shadow-neutral-800'>
+	<div class='h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-l text-center overflow-hidden' style='background-image: url("/uploads/{{post.featImg.filename }}")' title='{{post.slug}}'></div>
+	<a href='{{post_detail}}'>
+
+		<div class='border-r border-b border-l border-black lg:border-l-0 lg:border-t lg:border-black bg-black rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal'>
+			<div class='mb-4'>
+				<p class='text-sm text-neutral-300 flex items-center gap-2'>
+					<svg class='w-5 h-5 text-white' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='#DC2626' viewbox='0 0 17 20'>
+						<path d='M7.958 19.393a7.7 7.7 0 0 1-6.715-3.439c-2.868-4.832 0-9.376.944-10.654l.091-.122a3.286 3.286 0 0 0 .765-3.288A1 1 0 0 1 4.6.8c.133.1.313.212.525.347A10.451 10.451 0 0 1 10.6 9.3c.5-1.06.772-2.213.8-3.385a1 1 0 0 1 1.592-.758c1.636 1.205 4.638 6.081 2.019 10.441a8.177 8.177 0 0 1-7.053 3.795Z'/>
+					</svg>
+					{{post.category}}
+				</p>
+				<div class='font-bold text-xl mb-2 font-anton my-4 uppercase text-yellow-400'>
+					{{post.title}}
+				</div>
+				<p class='text-neutral-50 text-base'>{{post.content | striptags | slice(0,180)}}</p>
+			</div>
+			<div class='flex items-center py-2'>
+				<img class='w-10 h-10 rounded-full border-2 border-white mr-4' src='/uploads/{{post.user.avatar.filename}}' alt='{{post.slug}}'>
+				<div class='text-sm'>
+					<p class='text-neutral-400 leading-none'>{{post.user.username}}</p>
+					<p class='text-neutral-500'>{{post.createdAt|date('d M y')}}</p>
+				</div>
+			</div>
+		</div>
+	</a>
+
+</div>

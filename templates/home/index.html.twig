@@ -6,11 +6,17 @@
 {% block body %}
 
 	{# {{ dump(posts)}} #}
-	<div
-		class='container mx-auto'>
-
-		<!-- Post list -->
-		{% include 'post/postList.html.twig' %}
-		<!-- end post list -->
+	<div class='container mx-auto'>
+		<div class='grid grid-col-5'>
+			<div
+				class='col-span-4 sm:col-span-2'>
+				<!-- Post list -->
+				{% include 'post/postList.html.twig' %}
+				<!-- end post list -->
+			</div>
+			<div class='col-span-auto'>
+				{% include 'components/aside.html.twig' %}
+			</div>
+		</div>
 	</div>
 {% endblock %}

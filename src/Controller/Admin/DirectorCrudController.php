@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class DirectorCrudController extends AbstractCrudController
@@ -33,8 +34,9 @@ class DirectorCrudController extends AbstractCrudController
             ->setTargetFieldName('name')
             ->hideOnIndex();
         yield DateField::new('dateOfBirth', 'Date de naissance');
-
         yield AssociationField::new('featImg', 'Photo')
+            ->hideOnIndex();
+        yield TextareaField::new('featText', 'Texte mis en avant')
             ->hideOnIndex();
         yield DateField::new('createdAt', 'Création')
             ->hideOnForm();

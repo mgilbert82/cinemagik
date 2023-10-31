@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réalisateurs
+{% endblock %}
+
+{% block body %}
+
+	<div class='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4'>
+		{% for director in directors %}
+			<div class='mx-4 relative'>
+				{% include 'director/directorCard.html.twig' %}
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}
