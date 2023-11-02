@@ -27,3 +27,9 @@ services:
   App\EventListener\UploadListener:
     arguments:
       - "%kernel.project_dir%/public/uploads"
+
+  App\EventSubscriber\PostEventListener:
+    arguments:
+      $tokenStorage: "@security.token_storage"
+    tags:
+      - { name: doctrine.event_subscriber, connection: default }
