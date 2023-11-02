@@ -28,6 +28,14 @@ class Comment implements TimestampedInterface
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'comments')]
+    private ?Post $post = null;
+
+    public function __construct(Post $post)
+    {
+        $this->post = $post;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -77,6 +85,18 @@ class Comment implements TimestampedInterface
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getPost(): ?Post
+    {
+        return $this->post;
+    }
+
+    public function setPost(?Post $post): static
+    {
+        $this->post = $post;
 
         return $this;
     }

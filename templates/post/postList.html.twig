@@ -2,7 +2,7 @@
 	{% for post in posts %}
 		<div class='mx-4 relative'>
 			{% if post.source %}
-				<img src='/uploads/{{post.source.featImg.filename }}' alt='{{post.source.name}}' class='absolute top-4 right-4 w-10 h-10 rounded-full object-cover shadow-lg shadow-white'>
+				<img src='/uploads/{{post.source.featImg.filename }}' alt='{{post.source.name}}' class='absolute top-4 right-4 w-10 h-10 rounded-full object-cover shadow-lg shadow-black'>
 			{% endif %}
 			{% include 'post/postCard.html.twig' %}
 		</div>

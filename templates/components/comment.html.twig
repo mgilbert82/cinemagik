@@ -1,0 +1,36 @@
+<div
+	class='grid grid-flow-rows gap-4 p-4 m-4 bg-black rounded-lg shadow-lg'>
+	<!-- Number of Comment -->
+	<span class='ml-2 text-anton text-lg text-yellow-400 flex items-center gap-2' id='comment-count'>
+		<img src='/images/icons/comment-ico.svg' alt='comment-icon' class='w-10 h-10'>
+		<h1 id='comment-count'>{{ post.comments|length }}
+			commentaire(s)</h1>
+	</span>
+	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+		<!-- Form comment -->
+		<div class='w-full p-4'>
+			{{ form_start(commentForm , {'attr': {'class': 'comment-form'}}) }}
+			{{ form_row(commentForm.message, {'attr': {'class': 'rounded-lg w-full h-40 text-black'}}) }}
+			{{ form_row(commentForm.send, {'attr': {'class': 'w-1/4 float-right bg-yellow-400 text-black text-center mt-4 p-2 rounded-lg'}}) }}
+			{{ form_end(commentForm) }}
+		</div>
+
+	{% else %}
+		<!-- Registration Button -->
+		<span class='mx-4 my-2 text-sm'>Connectez-vous, pour écrire un commentaire!</span>
+		<span class='mx-4'>
+			<a href="{{ path('app_login') }}" class='bg-yellow-400 text-black font-semibold rounded-lg p-4 text-center'>
+				Se connecter
+			</a>
+		</span>
+
+	{% endif %}
+
+	<!-- Comment List -->
+	<div class='my-4 comment-list '>
+		{% for comment in post.comments %}
+			{% include 'comment/showComment.html.twig' with {'comment': comment} %}
+		{% endfor %}
+	</div>
+</div>
