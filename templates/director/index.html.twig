@@ -8,10 +8,12 @@
 	<div class='max-w-sm lg:max-w-full lg:flex shadow-lg shadow-neutral-800 w-full mx-auto mb-8'>
 		<div class='h-60 lg:h-auto lg:w-48 flex-none bg-cover rounded-tl lg:rounded-l text-center overflow-hidden' style='background-image: url("/uploads/{{director.featImg.filename }}");background-position:center' title='{{director.slug}}'></div>
 		<div class='bg-neutral-50 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal'>
-			<div class='mb-4'>
-				<div class='font-bold text-xl mb-2 font-anton my-4 uppercase text-gray-700'>
+			<div class='mb-4 text-gray-700'>
+				<p class='font-bold text-xl mb-2 font-anton my-4 uppercase text-gray-700'>
 					{{director.name}}
-				</div>
+				</p>
+				<p class='font-semibold my-4'>Date de naissance:
+					{{director.dateOfBirth | date('d M Y')}}</p>
 				<p class='text-gray-700 text-base'>{{director.featText}}</p>
 			</div>
 		</div>

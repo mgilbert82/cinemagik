@@ -29,4 +29,5 @@ yarn-error.log
 
 # Images
 public/uploads/*
+public/media/*
 !public/uploads/.gitignore

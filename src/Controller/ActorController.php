@@ -22,7 +22,7 @@ class ActorController extends AbstractController
         ]);
     }
 
-    #[Route('acteur/', name: 'app_actor')]
+    #[Route('acteurs/', name: 'app_actor')]
     public function getActorsName(ActorRepository $actorRepo)
     {
 

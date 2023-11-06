@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Réalisateurs
+{% block title %}Acteurs
 {% endblock %}
 
 {% block body %}
 
 	<div class='grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4'>
-		{% for director in directors %}
+		{% for actor in actors %}
 			<div class='mx-4 relative'>
-				{% include 'director/directorCard.html.twig' %}
+				{% include 'actor/actorCard.html.twig' %}
 			</div>
 		{% endfor %}
 	</div>

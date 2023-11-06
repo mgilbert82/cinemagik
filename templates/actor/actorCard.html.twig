@@ -1,0 +1,7 @@
+{# {% set director_detail = path('director_detail', {'slug':director.slug}) %} #}
+<div class='flex items-center gap-2'>
+	<img src='/uploads/{{actor.featImg.filename }}' alt='{{actor.slug}}' class='w-20 h-20 object-cover object-center hover:opacity-80 rounded-full border-2 border-neutral-200'>
+	<a href='/acteur/{{actor.slug}}'>
+		<h2 class='font-bold text-xl tracking-wide underline'>{{ actor.name}}</h2>
+	</a>
+</div>
