@@ -1,12 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modification du mot de passe de
+{% block title %}Modification de l'avatar de
 	{{ app.user.username }}
 {% endblock %}
 
 {% block body %}
-
-
 	<div
 		class='w-1/2 mx-auto px-4'>
 		<!-- Message flash-->
@@ -21,17 +19,17 @@
 			</div>
 		{% endfor %}
 
-		<h1 class='mb-4 text-center'>{% trans %}Modification du mot de passe de
+		<h1 class='mb-4 text-center'>{% trans %}Modification de l'avatar de
 			{% endtrans %}
 			{{ app.user.username }}</h1>
 
 		<div class='w-1/2 mx-auto bg-black p-6 rounded-lg'>
-			{{ form_errors(passwordForm) }}
+			{{ form_errors(avatarForm) }}
 
-			{{form_start(passwordForm)}}
-			{{form_row(passwordForm.plainPassword)}}
-			{{form_row(passwordForm.submit)}}
-			{{form_end(passwordForm)}}
+			{{form_start(avatarForm)}}
+			{{form_row(avatarForm.avatar)}}
+			{{form_row(avatarForm.submit)}}
+			{{form_end(avatarForm)}}
 		</div>
 	</div>
-</div>{% endblock %}
+{% endblock %}

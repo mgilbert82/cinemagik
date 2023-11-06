@@ -39,7 +39,5 @@ class UserCrudController extends AbstractCrudController
                 'ROLE_ADMIN' => 'warning',
                 'ROLE_AUTHOR' => 'success'
             ]);
-        yield AssociationField::new('avatar', 'Avatar')
-            ->hideOnIndex();
     }
 }

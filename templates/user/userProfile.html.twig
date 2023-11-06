@@ -18,9 +18,14 @@
 				<span class='text-red-50 text-center'>{{message}}!!</span>
 			</div>
 		{% endfor %}
+		<span class='flex items-center gap-2 my-4'>
+			{% if app.user.avatar is not null %}
+				<img src='/uploads/avatars/{{app.user.avatar}}' alt='avatar' class='w-10 h-10 object-cover rounded-full border-2 border-white'>
+			{% endif %}
+			<h1 class='r'>{% trans %}Profil de{% endtrans %}
+				{{ app.user.username }}</h1>
+		</span>
 
-		<h1 class='mb-4'>{% trans %}Profil de{% endtrans %}
-			{{ app.user.username }}</h1>
 
 		<div class='flex flex-col gap-4'>
 			<div class='grid grid-flow-rows gap-2 mb-4  bg-black p-4 rounded-lg'>
@@ -36,6 +41,7 @@
 				<div class='flex gap-6 justify-between w-full my-4'>
 					<a href='{{ path('app_edit_profile')}}' class='w-full rounded-xl bg-yellow-400 text-black text-anton font-semibold p-2 text-center'>Modifier le profil</a>
 					<a href='{{ path('app_edit_password')}}' class='w-full rounded-xl bg-yellow-400 text-black text-anton font-semibold p-2 text-center'>Modifier le mot de passe</a>
+					<a href='{{ path('app_edit_avatar')}}' class='w-full rounded-xl bg-yellow-400 text-black text-anton font-semibold p-2 text-center'>Modifier mon avatar</a>
 				</div>
 			</div>
 			{% if app.user.posts is not empty %}

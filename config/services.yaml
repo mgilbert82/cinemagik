@@ -5,7 +5,8 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
   medias_directory: "public/uploads"
-  uploads_directory: "uploads/"
+  uploads_directory: "%kernel.project_dir%/public/uploads/"
+  avatars_directory: "%kernel.project_dir%/public/uploads/avatars"
 
 services:
   # default configuration for services in *this* file
@@ -33,3 +34,6 @@ services:
       $tokenStorage: "@security.token_storage"
     tags:
       - { name: doctrine.event_subscriber, connection: default }
+
+  App\Form\DataTransformer\FileToAvatarTransformer:
+    autowire: true

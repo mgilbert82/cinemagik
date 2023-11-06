@@ -38,8 +38,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Post::class)]
     private Collection $posts;
 
-    #[ORM\ManyToOne]
-    private ?Media $avatar = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $avatar = null;
 
     public function __construct()
     {
@@ -188,20 +188,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->username;
+    }
 
-    public function getAvatar(): ?Media
+    public function getAvatar(): ?string
     {
         return $this->avatar;
     }
 
-    public function setAvatar(?Media $avatar): static
+    public function setAvatar(?string $avatar): static
     {
         $this->avatar = $avatar;
 
         return $this;
-    }
-    public function __toString()
-    {
-        return $this->username;
     }
 }

@@ -3,17 +3,17 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\Type\EditAvatarType;
 use App\Form\Type\EditPasswordType;
 use App\Form\Type\EditProfileType;
 use App\Form\Type\RegistrationFormType;
-use App\Form\Type\UserAvatarType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends AbstractController
@@ -32,6 +32,31 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //Gestion de l'avatar
+            $avatarFile = $form->get('avatar')->getData();
+
+            if ($avatarFile) {
+                $newFilename = uniqid() . '.' . $avatarFile->guessExtension();
+
+                // Déplacez le fichier vers le répertoire où vous souhaitez le stocker
+                try {
+                    $avatarFile->move(
+                        $this->getParameter('medias_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    $this->addFlash(
+                        'success',
+                        $e->getMessage()
+                    );
+                }
+
+                // Enregistrez le nom du fichier de l'avatar dans la base de données
+                $user->setAvatar($newFilename);
+            }
+
+
             // encode the plain password
             $user->setPassword(
                 $this->passwordHasher->hashPassword(
@@ -95,7 +120,65 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/profile/pwd', name: 'app_edit_password')]
+    #[Route('/profile/edit/avatar', name: 'app_edit_avatar')]
+    public function editAvatar(Request $request)
+    {
+        $user = $this->entityManager->find(User::class, $this->getUser());
+        $form = $this->createForm(EditAvatarType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // $file = $request->files->get('edit_avatar')['avatar'];
+
+            //Gestion de l'avatar
+            $avatarFile = $form->get('avatar')->getData();
+            //Dossier d'upload
+            $upload_directory = $this->getParameter('avatars_directory');
+            //Renommer le fichier
+            //$newFilename = md5(uniqid()) . '.' . $avatarFile->guessExtension();
+
+            // $avatarFile->move(
+            //     $upload_directory,
+            //     $newFilename
+            // );
+            // echo "<pre>";
+            // var_dump($newFilename);
+            // die;
+            if ($avatarFile) {
+                $newFilename = md5(uniqid()) . '.' . $avatarFile->guessExtension();
+
+                //Déplacez le fichier vers le répertoire où vous souhaitez le stocker
+                try {
+                    $avatarFile->move(
+                        $upload_directory,
+                        $newFilename
+                    );
+
+                    //Enregistrez le nom du fichier de l'avatar dans la base de données
+                    $user->setAvatar($newFilename);
+
+                    $this->entityManager->persist($user);
+                    $this->entityManager->flush();
+
+                    $this->addFlash('success', 'Avatar mis à jour');
+
+                    return $this->redirectToRoute('app_profile');
+                } catch (FileException $e) {
+                    $this->addFlash(
+                        'success',
+                        $e->getMessage()
+                    );
+                }
+            }
+        }
+
+        return $this->render('user/editAvatar.html.twig', [
+            'avatarForm' => $form,
+        ]);
+    }
+
+    #[Route('/profile/edit/pwd', name: 'app_edit_password')]
     public function editPassword(Request $request): Response
     {
         $user = $this->entityManager->find(User::class, $this->getUser());
