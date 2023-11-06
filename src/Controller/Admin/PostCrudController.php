@@ -36,7 +36,8 @@ class PostCrudController extends AbstractCrudController
         yield DateField::new('createdAt', 'Création')
             ->hideOnForm();
         yield DateField::new('updatedAt', 'Modification')
-            ->hideOnForm();
+            ->hideOnForm()
+            ->hideOnIndex();
         yield DateField::new('releaseDate', 'Date de sortie')
             ->hideOnIndex();
         yield IntegerField::new('rate', 'Note')
@@ -47,15 +48,17 @@ class PostCrudController extends AbstractCrudController
             ]);
         yield TextField::new('title', 'Titre');
         yield SlugField::new('slug')
-            ->setTargetFieldName('title');
+            ->setTargetFieldName('title')
+            ->hideOnIndex();
 
-        yield TextField::new('featText', 'Texte mise en avant');
+        yield TextField::new('featText', 'Texte mise en avant')
+            ->hideOnIndex();
         yield TextField::new('trailerUrl', 'Lien bande annonce')
             ->hideOnIndex();
         yield ChoiceField::new('type')
             ->setChoices([
-                'MOVIE' => 'FILM',
-                'TVSHOW' => 'SERIE'
+                'FILM' => 'MOVIE',
+                'SERIE' => 'TVSHOW'
             ])
             ->renderAsBadges([
                 'MOVIE' => 'primary',
@@ -63,7 +66,8 @@ class PostCrudController extends AbstractCrudController
             ]);
         yield AssociationField::new('featImg', 'Affiche/image')
             ->hideOnIndex();
-        yield AssociationField::new('category', 'Genres');
+        yield AssociationField::new('category', 'Genres')
+            ->hideOnIndex();
         yield AssociationField::new('director', 'Réalisateur');
         yield AssociationField::new('actors', 'Les acteurs')
             ->hideOnIndex();

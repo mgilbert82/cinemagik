@@ -33,7 +33,7 @@ class PostRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
-    public function findByActors(Actor $actor)
+    public function findByActor(Actor $actor)
     {
         return $this->createQueryBuilder('p')
             ->join('p.actors', 'a')
