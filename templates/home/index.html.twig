@@ -7,14 +7,14 @@
 
 	{# {{ dump(posts)}} #}
 	<div class='container mx-auto'>
-		<div class='grid grid-col-5'>
+		<div class='lg:flex justify-center'>
 			<div
-				class='col-span-4 sm:col-span-2'>
+				class='m-2'>
 				<!-- Post list -->
 				{% include 'post/postList.html.twig' %}
 				<!-- end post list -->
 			</div>
-			<div class='col-span-auto'>
+			<div class='m-2 w-1/3 mx-auto'>
 				{% include 'components/aside.html.twig' %}
 			</div>
 		</div>
