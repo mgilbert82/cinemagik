@@ -30,3 +30,6 @@ yarn-error.log
 # Images
 public/uploads/*
 !public/uploads/.gitignore
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###

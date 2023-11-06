@@ -1,0 +1,15 @@
+liip_imagine:
+  driver: gd
+  resolvers:
+    default:
+      web_path: ~
+  filter_sets:
+    thumb:
+      quality: 75
+      filters:
+        thumbnail: { size: [350, 350], mode: outbound }
+    cardimg:
+      quality: 75
+      filters:
+        scale:
+          dim: [800, 800]

@@ -1,9 +1,6 @@
-<div class='grid lg:grid-cols-2 justify-center gap-2'>
+<div class='grid lg:grid-cols-3 justify-center gap-2'>
 	{% for post in posts %}
-		<div class='m-2 relative'>
-			{% if post.source %}
-				<img src='/uploads/{{post.source.featImg.filename }}' alt='{{post.source.name}}' class='absolute top-4 right-4 w-10 h-10 rounded-full object-cover shadow-lg shadow-black'>
-			{% endif %}
+		<div class=''>
 			{% include 'post/postCard.html.twig' %}
 		</div>
 	{% endfor %}

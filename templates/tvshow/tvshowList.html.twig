@@ -5,12 +5,11 @@
 
 {% block body %}
 
-	{# {{ dump(posts)}} #}
-	<div
-		class='container mx-auto'>
-
-		<!-- Post list -->
-		{% include 'post/postList.html.twig' %}
-		<!-- end post list -->
+	<div class='grid lg:grid-cols-4 justify-center gap-2'>
+		{% for post in posts %}
+			<div class=''>
+				{% include 'post/postCard.html.twig' %}
+			</div>
+		{% endfor %}
 	</div>
 {% endblock %}
