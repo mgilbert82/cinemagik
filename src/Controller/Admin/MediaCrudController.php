@@ -34,11 +34,10 @@ class MediaCrudController extends AbstractCrudController
         yield SlugField::new('slug')
             ->setTargetFieldName('name')
             ->hideOnIndex();
-
         $mediaField = ImageField::new('filename', 'Média')
             ->setBasePath($uploadDir)
             ->setUploadDir($mediaDir)
-            ->setUploadedFileNamePattern('[slug]-[uuid].[extension]');
+            ->setUploadedFileNamePattern('[uuid].[extension]');
 
         if (Crud::PAGE_EDIT === $pageName) {
             $mediaField->setRequired(false);

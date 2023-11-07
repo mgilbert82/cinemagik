@@ -16,5 +16,9 @@
 			</div>
 		</div>
 	</div>
-	{% include 'post/postList.html.twig' %}
+	<div class='grid lg:grid-cols-4 justify-center gap-2'>
+		{% for post in posts %}
+			{% include 'post/postCard.html.twig' %}
+		{% endfor %}
+	</div>
 {% endblock %}

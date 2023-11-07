@@ -1,20 +1,22 @@
 {% set post_detail = path('post_detail', {'slug':post.slug}) %}
 
-<div class='mx-auto px-4 max-w-xl flex flex-wrap'>
+<div class='mx-auto px-4 lg:max-w-xl flex flex-wrap'>
 	<div class='bg-black shadow-2xl rounded-lg mb-6 tracking-wide'>
 		<div class='md:flex-shrink-0 relative'>
 			<p class='text-sm text-neutral-300 flex items-center gap-2 py-4 px-4'>
 				<img src='/images/icons/category-ico-r.svg' alt='category-icon' class='w-8 h-8'>
 				{{post.category}}
 			</p>
-			<img src="{{ ('/uploads/' ~ post.featImg.filename) | imagine_filter('thumb') }}" alt="{{ post.slug }}" class='w-full h-64 object-cover object-top'>
+			<a href="{{post_detail}}">
+				<img src="{{ ('/uploads/' ~ post.featImg.filename) | imagine_filter('thumb') }}" alt="{{ post.slug }}" class='w-full h-64 object-cover object-top hover:opacity-50'>
+			</a>
 			{% if post.source %}
 				<img src='/uploads/{{post.source.featImg.filename }}' alt='{{post.source.name}}' class='absolute right-4 top-10 w-10 h-10 rounded-full object-cover shadow-lg shadow-black'>
 			{% endif %}
 		</div>
-		<div class='mb-4 p-4 min-h-[330px] flex flex-col justify-between'>
+		<div class='mb-4 p-4 lg:min-h-[350px] flex flex-col justify-between'>
 
-			<div class='flex flex-col gap-4 justify-between'>
+			<div class='flex flex-col justify-between sm:gap-4'>
 				<a href="{{post_detail}}" class='underline text-yellow-400'>
 					<h4 class='font-bold text-xl font-anton uppercase text-yellow-400'>{{post.title}}</h4>
 				</a>
@@ -32,9 +34,9 @@
 					</p>
 				{% endif %}
 			</div>
-
-			{% if post.user is not null and post.user.avatar is not null %}
-				<div class='flex items-center'>
+			{# {{dump(post.user.avatar)}} #}
+			{% if post.user is not null and post.user is defined %}
+				<div class='flex items-center sm:mt-4'>
 					{% if app.user.avatar is not null %}
 						<img class='w-10 h-10 rounded-full object-cover object-top mr-4 border-2 border-white' src='/uploads/avatars/{{post.user.avatar}}' alt='{{post.slug}}'>
 					{% endif %}
