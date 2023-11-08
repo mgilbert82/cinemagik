@@ -37,6 +37,8 @@ class SourceCrudController extends AbstractCrudController
             ->hideOnIndex();
         yield AssociationField::new('featImg', 'Image')
             ->hideOnIndex();
+        yield TextField::new('link', "Url de la plateform")
+            ->hideOnIndex();
         yield ColorField::new('color', 'Couleur');
         yield DateField::new('createdAt', 'Création')
             ->hideOnForm();

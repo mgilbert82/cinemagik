@@ -41,6 +41,9 @@ class Source implements TimestampedInterface
     #[ORM\OneToMany(mappedBy: 'source', targetEntity: Post::class)]
     private Collection $posts;
 
+    #[ORM\Column(length: 255)]
+    private ?string $link = null;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -167,5 +170,17 @@ class Source implements TimestampedInterface
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(string $link): static
+    {
+        $this->link = $link;
+
+        return $this;
     }
 }
