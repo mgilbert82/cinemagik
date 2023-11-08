@@ -14,18 +14,27 @@
 						<h1 class='text-left tracking-wider mr-4'>{{ post.title }}</h1>
 					</div>
 					<span class='text-center text-white p-1 text-sm flex items-center gap-2'>
-						<img src='/images/icons/category-ico-y.svg' alt='category-icon' class='w-8 h-8'>
-						{{ post.category.name }}
+						<img src='/images/icons/category-ico-r.svg' alt='category-icon' class='w-8 h-8'>
+						<a href='/categorie/{{post.category.slug}}' class='underline text-gray-400'>
+							{{ post.category.name }}
+						</a>
 					</span>
 				</div>
 				<div class='flex items-center gap-4 pb-4'>
-					<img src="{{ asset('images/icons/love-ico.svg') }}" alt='love-icon'>
-					{{ post.rate }}
+					<img src="{{ asset('images/icons/like-ico.svg') }}" alt='like-icon' class='w-8 h-8'>
+					{{ post.rate }}/10
 				</div>
 				{% if post.source %}
-					<div class='flex items-center gap-2'>
-						VOD :
-						<img src='/uploads/{{ post.source.featImg.filename }}' alt="{{ post.source.name }}" class='w-10 h-10 rounded-full object-cover'>
+					<div class='relative group my-2'>
+						<img
+						src='/uploads/{{ post.source.featImg.filename }}' alt="{{ post.source.name }}" class='w-10 h-10 rounded-full object-cover'>
+
+						<!-- Le texte qui apparaîtra au survol -->
+						<div class='absolute inset-1 left-10 flex items-center justify-center opacity-0 bg-neutral-800 bg-opacity-50 transition-opacity group-hover:opacity-100 rounded-lg'>
+							<span class='text-white'>
+								<a href='{{post.source.link}}' class='underline text-yellow-400' target='_blank'>{{post.source.name}}</a>
+							</span>
+						</div>
 					</div>
 				{% endif %}
 				<div
@@ -47,7 +56,7 @@
 					<!-- post details -->
 					<div class='flex items-center gap-2 my-2'>
 						<img src="{{ asset('images/icons/movie-ico.svg') }}" alt=''>
-						<a href="{{ post.trailerUrl }}" class='underline'>Bande annonce</a>
+						<a href="{{ post.trailerUrl }}" class='underline' target='_blank'>Bande annonce</a>
 					</div>
 					<!-- Post Content -->
 					<div class='mx-4 my-6 border-l border-yellow-400 pl-4 pr-4'>

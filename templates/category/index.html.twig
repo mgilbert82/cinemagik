@@ -1,10 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Films par Catégories
+{% block title %}Films par categorie |
+	{{ category.name}}
 {% endblock %}
 
 {% block body %}
+	<div class='lg:max-w-full lg:flex shadow-lg shadow-neutral-800 w-full mx-auto lg:mb-20 md:mb-10'>
+		{% if category.featText %}
+			<div class='w-full relative'>
+				<img src='/uploads/{{category.media.filename}}' alt='category-icon' class='min-w-full h-[250px] object-cover object-center lg:rounded-lg'>
+				<div class='lg:absolute top-5 right-5 z-50 bg-black bg-opacity-80 lg:rounded-lg p-4 lg:w-1/3 h-auto'>
+					<h1 class='text-yellow-400 text-3xl my-4'>{{category.name}}</h1>
+					<p class='text-sm'>{{category.featText}}</p>
+				</div>
 
-	{{dump(categories)}}
+			</div>
+		{% else %}
 
+			<div class='w-full relative'>
+				<img src='/uploads/{{category.media.filename}}' alt='category-icon' class='min-w-full h-[250px] object-cover object-center rounded-lg'>
+				<a href='/categorie/{{category.slug}}'>
+					<h1 class='text-yellow-400 text-3xl absolute bottom-10 right-10 z-50'>{{category.name}}</h1>
+				</a>
+			</div>
+
+		{% endif %}
+	</div>
+
+	<div class='grid lg:grid-cols-4 justify-center gap-2 my-4'>
+		{% for post in posts %}
+			{% include 'post/postCard.html.twig' %}
+		{% endfor %}
+	</div>
 {% endblock %}

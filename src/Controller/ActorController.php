@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ActorController extends AbstractController
 {
     #[Route('/acteur/{slug}', name: 'actor_posts')]
-    public function actorPosts(Actor $actor, PostRepository $postRepository): Response
+    public function getActorPosts(Actor $actor, PostRepository $postRepository): Response
     {
         $actorPosts = $postRepository->findByActor($actor);
 

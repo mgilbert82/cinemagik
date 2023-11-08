@@ -4,12 +4,23 @@
 {% endblock %}
 
 {% block body %}
+	<div class='container mx-auto'>
+		<span class='flex items-center  gap-2'>
+			<img src='/images/icons/actor-ico.svg' alt='cator-icon' class='w-6 h-6'>
+			<h1>Les acteurs</h1>
+		</span>
+		<blockquote class='border-l-4 border-yellow-600 p-4 m-4 text-italic text-gray-700 bg-gray-100 rounded-lg'>
+			"Sous les feux de l'écran, ils sont des astres éphémères.
+												  Chaque rôle qu'ils incarnent, une étoile solitaire.
+												  Le cinéma, leur scène, où la magie opère."
+		</blockquote>
+		<div class='grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-2'>
 
-	<div class='grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-2'>
-		{% for actor in actors %}
-			<div class='mx-4 relative'>
-				{% include 'actor/actorCard.html.twig' %}
-			</div>
-		{% endfor %}
+			{% for actor in actors %}
+				<div class='mx-4 relative'>
+					{% include 'actor/actorCard.html.twig' %}
+				</div>
+			{% endfor %}
+		</div>
 	</div>
 {% endblock %}

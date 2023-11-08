@@ -1,8 +1,13 @@
 {# {% set director_detail = path('director_detail', {'slug':director.slug}) %} #}
 
-<div class='flex items-center gap-2'>
-	<img src='/uploads/{{director.featImg.filename }}' alt='{{director.slug}}' class='w-20 h-20 object-cover object-center hover:opacity-80 rounded-full border-2 border-neutral-200'>
-	<a href='/realisateur/{{director.slug}}'>
-		<h2 class='font-bold text-xl tracking-wide underline'>{{ director.name}}</h2>
+<div class='flex flex-col items-center gap-4 bg-neutral-800 p-4 rounded-lg mt-4'>
+	<img src='/uploads/{{director.featImg.filename }}' alt='{{director.slug}}' class='w-20 h-20 object-cover object-center rounded-full border-white border-2'>
+	<a href='/realisateur/{{director.slug}}' class='text-sm underline text-yellow-400 flex items-center gap-2'>
+		<img src='/images/icons/director-ico.svg' alt='director-icon' class='w-6 h-86'>
+		<h2 class='font-bold text-xl tracking-wide underline float-left'>{{ director.name}}</h2>
 	</a>
+	<p class='p-2'>{{director.featText | striptags|slice(0,180)}}...
+		<br>
+		<a href='/realisateur/{{director.slug}}' class='text-sm underline text-yellow-400'>[Lire la suite]</a>
+	</p>
 </div>

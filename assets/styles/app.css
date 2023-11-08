@@ -44,3 +44,41 @@ h4 {
 h5 {
     font-size: 18px;
 }
+
+.border-star {
+    position: relative;
+}
+
+.border-star::before,
+.border-star::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.border-star::before {
+    border: 2px solid transparent;
+    border-image: conic-gradient(from 0deg,
+            #FACC15,
+            #FACC15 20%,
+            #FACC15 20%,
+            #FACC15 30%,
+            #FACC15 30%,
+            #FACC15 50%,
+            #FACC15 50%,
+            #FACC15 60%,
+            #FACC15 60%,
+            #FACC15 80%,
+            #FACC15 80%,
+            #FACC15 90%,
+            #FACC15 90%,
+            #FACC15 100%);
+    border-image-slice: 1;
+}
+
+.border-star::after {
+    border: 2px solid #FACC15;
+}
