@@ -39,7 +39,7 @@
 				{# {{dump(post.user.avatar)}} #}
 				{% if post.user is not null and post.user is defined %}
 					<div class='flex items-center sm:mt-4'>
-						{% if app.user.avatar is not null %}
+						{% if post.user.avatar is not null %}
 							<img class='w-10 h-10 rounded-full object-cover object-top mr-4 border-2 border-white' src='/uploads/avatars/{{post.user.avatar}}' alt='{{post.slug}}'>
 						{% endif %}
 						<div class='text-sm'>

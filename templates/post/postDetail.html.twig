@@ -5,104 +5,91 @@
 {% endblock %}
 
 {% block body %}
-	<div class='grid lg:grid-cols-3 justify-between'>
-		<div class='col-span-2 flex p-4 items-stretch h-full'>
-			<img src="{{ ('/uploads/' ~ post.featImg.filename) | imagine_filter('cardimg') }}" alt="{{ post.slug }}" class='w-1/2 object-cover rounded-tl-lg rounded-bl-lg'>
-			<div class='p-4 bg-black rounded-tr-lg rounded-br-lg flex-1'>
-				<div class='flex flex-shrink-0 justify-between items-center'>
-					<div class='flex-1 flex items-center my-2'>
-						<h1 class='text-left tracking-wider mr-4'>{{ post.title }}</h1>
-					</div>
-					<span class='text-center text-white p-1 text-sm flex items-center gap-2'>
-						<img src='/images/icons/category-ico-r.svg' alt='category-icon' class='w-8 h-8'>
-						<a href='/categorie/{{post.category.slug}}' class='underline text-gray-400'>
-							{{ post.category.name }}
-						</a>
-					</span>
-				</div>
-				<div class='flex items-center gap-4 pb-4'>
-					<img src="{{ asset('images/icons/like-ico.svg') }}" alt='like-icon' class='w-8 h-8'>
-					{{ post.rate }}/10
-				</div>
-				{% if post.source %}
-					<div class='relative group my-2'>
-						<img
-						src='/uploads/{{ post.source.featImg.filename }}' alt="{{ post.source.name }}" class='w-10 h-10 rounded-full object-cover'>
-
-						<!-- Le texte qui apparaîtra au survol -->
-						<div class='absolute inset-1 left-10 flex items-center justify-center opacity-0 bg-neutral-800 bg-opacity-50 transition-opacity group-hover:opacity-100 rounded-lg'>
-							<span class='text-white'>
-								<a href='{{post.source.link}}' class='underline text-yellow-400' target='_blank'>{{post.source.name}}</a>
-							</span>
+	<div class='container mx-auto'>
+		<div class='grid lg:grid-cols-4 justify-between'>
+			<div class='col-span-3 flex p-4 items-stretch h-full'>
+				<img src="{{ ('/uploads/' ~ post.featImg.filename) | imagine_filter('cardimg') }}" alt="{{ post.slug }}" class='w-1/2 object-cover rounded-tl-lg rounded-bl-lg'>
+				<div class='p-4 bg-black rounded-tr-lg rounded-br-lg flex-1'>
+					<div class='flex flex-shrink-0 justify-between items-center'>
+						<div class='flex-1 flex items-center my-2'>
+							<h1 class='text-left tracking-wider mr-4'>{{ post.title }}</h1>
 						</div>
+						<span class='text-center text-white p-1 text-sm flex items-center gap-2'>
+							<img src='/images/icons/category-ico-r.svg' alt='category-icon' class='w-8 h-8'>
+							<a href='/categorie/{{post.category.slug}}' class='underline text-gray-400'>
+								{{ post.category.name }}
+							</a>
+						</span>
 					</div>
-				{% endif %}
-				<div
-					class='grid grid-flow-row gap-2'>
-					<!-- Director -->
-					<span>
-						De:
-						<a href="{{ path('director_posts', {'slug': post.director.slug }) }}" class='text-gray-400 ml-2 underline'>{{ post.director.name }}</a>
-					</span>
-					<!-- Actors -->
-					<div class='mb-2'>
-						Avec:
-						{% if post.actors is not null %}
-							{% for actor in post.actors %}
-								<a href="{{ path('actor_posts', {'slug': actor.slug }) }}" class='text-gray-400 ml-2 underline'>{{ actor.name }}</a>
-							{% endfor %}
-						{% endif %}
+					<div class='flex items-center gap-4 pb-4'>
+						<img src="{{ asset('images/icons/like-ico.svg') }}" alt='like-icon' class='w-8 h-8'>
+						{{ post.rate }}/10
 					</div>
-					<!-- post details -->
-					<div class='flex items-center gap-2 my-2'>
-						<img src="{{ asset('images/icons/movie-ico.svg') }}" alt=''>
-						<a href="{{ post.trailerUrl }}" class='underline' target='_blank'>Bande annonce</a>
-					</div>
-					<!-- Post Content -->
-					<div class='mx-4 my-6 border-l border-yellow-400 pl-4 pr-4'>
-						<p class='text-justify text-lg'>{{ post.content | raw }}</p>
-					</div>
-					{% if post.user is not null and post.user.avatar is not null %}
+					{% if post.source %}
+						<div class='relative group my-2'>
+							<img
+							src='/uploads/{{ post.source.featImg.filename }}' alt="{{ post.source.name }}" class='w-10 h-10 rounded-full object-cover'>
 
-						<div class='flex flex-col justify-end text-sm border-r border-yellow-400 ml-auto p-2'>
-							<div class='flex items-center gap-2 text-right'>
-								{% if app.user.avatar is not null %}
-									<img src='/uploads/avatars/{{ post.user.avatar }}' alt='user-avatar' class='rounded-full w-10 h-10 object-cover object-center border-2 border-white'>
-								{% endif %}
-								<h6 class='font-semibold text-neutral-400 underline'>
-									{{ post.user.username }}
-								</h6>
+							<!-- Le texte qui apparaîtra au survol -->
+							<div class='absolute inset-1 left-10 flex items-center justify-center opacity-0 bg-neutral-800 bg-opacity-50 transition-opacity group-hover:opacity-100 rounded-lg'>
+								<span class='text-white'>
+									<a href='{{post.source.link}}' class='underline text-yellow-400' target='_blank'>{{post.source.name}}</a>
+								</span>
 							</div>
-							<span class='flex flex-col text-sm font-extralight my-2 text-neutral-300'>
-								Publié le
-								{{ post.createdAt | date('d/m/y') }}
-							</span>
 						</div>
 					{% endif %}
+					<div
+						class='grid grid-flow-row gap-2'>
+						<!-- Director -->
+						<span>
+							De:
+							<a href="{{ path('director_posts', {'slug': post.director.slug }) }}" class='text-gray-400 ml-2 underline'>{{ post.director.name }}</a>
+						</span>
+						<!-- Actors -->
+						<div class='mb-2'>
+							Avec:
+							{% if post.actors is not null %}
+								{% for actor in post.actors %}
+									<a href="{{ path('actor_posts', {'slug': actor.slug }) }}" class='text-gray-400 ml-2 underline'>{{ actor.name }}</a>
+								{% endfor %}
+							{% endif %}
+						</div>
+						<!-- post details -->
+						<div class='flex items-center gap-2 my-2'>
+							<img src="{{ asset('images/icons/movie-ico.svg') }}" alt=''>
+							<a href="{{ post.trailerUrl }}" class='underline' target='_blank'>Bande annonce</a>
+						</div>
+						<!-- Post Content -->
+						<div class='mx-4 my-6 border-l border-yellow-400 pl-4 pr-4'>
+							<p class='text-justify text-lg'>{{ post.content | raw }}</p>
+						</div>
+						{% if post.user is not null and post.user.avatar is not null %}
+
+							<div class='flex flex-col justify-end text-sm border-r border-yellow-400 ml-auto p-2'>
+								<div class='flex items-center gap-2 text-right'>
+									{% if post.user.avatar is not null %}
+										<img src='/uploads/avatars/{{ post.user.avatar }}' alt='user-avatar' class='rounded-full w-10 h-10 object-cover object-center border-2 border-white'>
+									{% endif %}
+									<h6 class='font-semibold text-neutral-400 underline'>
+										{{ post.user.username }}
+									</h6>
+								</div>
+								<span class='flex flex-col text-sm font-extralight my-2 text-neutral-300'>
+									Publié le
+									{{ post.createdAt | date('d/m/y') }}
+								</span>
+							</div>
+						{% endif %}
+					</div>
 				</div>
 			</div>
+			<!-- most Like movies-->
+			{% include 'components/mostLikePost.html.twig' %}
 		</div>
-		<div class='flex flex-col gap-4 p-4 m-4 bg-black rounded-lg shadow-lg'>
-			<span class='flex gap-2'>
-				<img src="{{asset('/images/icons/like-ico.svg')}}" alt='like-icons' class='w-8 h-8'>
-				<h5>Les mieux notées :</h5>
-			</span>
-			<ul class='px-5 list-disc'>
-				<li>
-					<a href='#' class='underline'>Avatar</a>
-				</li>
-				<li>
-					<a href='#' class='underline'>Mission Impossible</a>
-				</li>
-				<li>
-					<a href='#' class='underline'>Coeur de dragon</a>
-				</li>
-			</ul>
+		<!-- comment sections -->
+		<div class='md:w-1/2'>
+			{% include 'components/comment.html.twig' %}
 		</div>
+		<!-- comment sections -->
 	</div>
-	<!-- comment sections -->
-	<div class='md:w-1/2'>
-		{% include 'components/comment.html.twig' %}
-	</div>
-	<!-- comment sections -->
 {% endblock %}
