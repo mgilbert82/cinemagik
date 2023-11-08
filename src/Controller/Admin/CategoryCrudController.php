@@ -5,9 +5,11 @@ namespace App\Controller\Admin;
 use App\Entity\Category;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ColorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class CategoryCrudController extends AbstractCrudController
@@ -32,7 +34,12 @@ class CategoryCrudController extends AbstractCrudController
         yield SlugField::new('slug')
             ->setTargetFieldName('name')
             ->hideOnIndex();
-        yield ColorField::new('color', 'Couleur');
+        yield AssociationField::new('media', 'Image')
+            ->hideOnIndex();
+        yield TextareaField::new('featText', 'Définition')
+            ->hideOnIndex();
+        yield ColorField::new('color', 'Couleur')
+            ->hideOnIndex();
         yield DateField::new('createdAt', 'Création')
             ->hideOnForm();
         yield DateField::new('updatedAt', 'Modification')

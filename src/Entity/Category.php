@@ -35,6 +35,12 @@ class Category implements TimestampedInterface
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Post::class)]
     private Collection $posts;
 
+    #[ORM\ManyToOne]
+    private ?Media $media = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $featText = null;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -137,5 +143,29 @@ class Category implements TimestampedInterface
     public function __toString(): string
     {
         return $this->name;
+    }
+
+    public function getMedia(): ?Media
+    {
+        return $this->media;
+    }
+
+    public function setMedia(?Media $media): static
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    public function getFeatText(): ?string
+    {
+        return $this->featText;
+    }
+
+    public function setFeatText(?string $featText): static
+    {
+        $this->featText = $featText;
+
+        return $this;
     }
 }

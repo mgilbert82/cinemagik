@@ -2,19 +2,32 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Repository\CategoryRepository;
+use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CategoryController extends AbstractController
 {
-    #[Route('/categories', name: 'app_category')]
-    public function index(CategoryRepository $categoryRepository): Response
+    #[Route('/categorie/{slug}', name: 'category_posts')]
+    public function getCategoryPosts(Category $category, PostRepository $postRepository): Response
+    {
+        $categoryPosts = $postRepository->findByCategory($category);
+
+        return $this->render('category/index.html.twig', [
+            'posts' => $categoryPosts,
+            'category' => $category
+        ]);
+    }
+
+    #[Route('categories/', name: 'app_category')]
+    public function getCategoriesName(CategoryRepository $categoryRepository): Response
     {
         $categories = $categoryRepository->findAll();
 
-        return $this->render('category/index.html.twig', [
+        return $this->render('category/categoryList.html.twig', [
             'categories' => $categories,
         ]);
     }
