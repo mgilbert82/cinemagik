@@ -10,7 +10,7 @@
 					{{post.category}}
 				</p>
 				<div class='overflow-hidden'>
-					<img src="{{ ('/uploads/' ~ post.featImg.filename) | imagine_filter('thumb') }}" alt="{{ post.slug }}" class='w-full h-64 object-cover object-top hover:scale-125 transform transition-transform ease-in delay-400 overflow-hidden'>
+					<img src="{{ ('/uploads/' ~ post.featImg.filename) | imagine_filter('thumb') }}" alt="{{ post.slug }}" class='w-full h-64 object-cover object-top hover:opacity-60'>
 				</div>
 				{% if post.source %}
 					<img src='/uploads/{{post.source.featImg.filename }}' alt='{{post.source.name}}' class='absolute right-4 top-10 w-10 h-10 rounded-full object-cover shadow-lg shadow-black'>
@@ -24,16 +24,19 @@
 					{% if post.featText is not null %}
 						<p class='text-neutral-50 text-base'>
 							{{post.featText | striptags | slice(0,180)}}...
-							<br>
-							<a href='{{post_detail}}' class='text-yellow-400'>[Lire la suite]</a>
 						</p>
+
 					{% else %}
-						<p class='text-neutral-50 text-base'>
+						<p class=' text-neutral-50 text-base'>
 							{{post.content | striptags | slice(0,180)}}...
-							<br>
-							<a href='{{post_detail}}' class='text-yellow-400'>[Lire la suite]</a>
 						</p>
 					{% endif %}
+					<div class='text-right ml-auto'>
+						<a href='{{post_detail}}' class='text-red-600 hover:text-yellow-400 font-semibold underline flex items-center gap-2'>
+							<img src='/images/icons/arrow-ico.svg' alt='read-icon' class='w-5 h-5'>
+							Lire la suite
+						</a>
+					</div>
 				</div>
 				{# {{dump(post.user.avatar)}} #}
 				{% if post.user is not null and post.user is defined %}
