@@ -14,86 +14,44 @@
 			</svg>
 		</button>
 	</div>
-	<ul class='hidden z-50 absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6'>
-		<li>
-			<a class='text-xl font-anton text-yellow-400 uppercase tracking-wider border-b border-[#1C1917] hover:border-b hover:border-red-600' href='{{path('app_movies')}}'>Films</a>
-		</li>
-		<li>
-			<a class='text-xl font-anton text-yellow-400 uppercase tracking-wider border-b border-[#1C1917] hover:border-b hover:border-red-600' href='{{path('app_tvshow')}}'>Séries</a>
-		</li>
+	<div class='hidden z-50 absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6'>
+		<a class='text-xl font-anton text-yellow-400 uppercase tracking-wider border-b border-[#1C1917] hover:border-b hover:border-red-600' href='{{path('app_movies')}}'>Films</a>
+
+		<a class='text-xl font-anton text-yellow-400 uppercase tracking-wider border-b border-[#1C1917] hover:border-b hover:border-red-600' href='{{path('app_tvshow')}}'>Séries</a>
 
 		<!-- SVOD-->
-		<li>
-			<div class='flex flex-col items-center justify-between'>
-				<div class='group inline-block relative w-full'>
-					<button class='w-full inline-flex items-center'>
-						<span class='text-xl font-anton text-yellow-400 uppercase tracking-wider'>SVOD</span>
-						<svg class='fill-current h-4 w-4 text-red-600' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 20 20'>
-							<path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/>
-						</svg>
-					</button>
-					<ul class='absolute hidden text-white group-hover:block rounded-lg'>
-						<li class=''>
-							<a class='block bg-[#1C1917] hover:bg-white hover:text-black py-2 px-4 whitespace-no-wrap' href='/plateforme/disneyplus'>
-								Disney+</a>
-						</li>
-						<li class=''>
-							<a class='block bg-[#1C1917] hover:bg-white hover:text-black py-2 px-4 whitespace-no-wrap' href='/plateforme/amazon-prime-video'>
-								Amazon Prime Video</a>
-						</li>
-						<li class=''>
-							<a class='block bg-[#1C1917] hover:bg-white hover:text-black py-2 px-4 whitespace-no-wrap' href='/plateforme/netflix'>
-								Netflix
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</li>
-	</ul>
+		{{ render(controller('App\\Controller\\SourceController::getSourcesName')) }}
+	</div>
 	{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-
 		<!-- Connection Button -->
 		<a class='hidden lg:inline-block py-2 px-6 bg-yellow-400 text-black font-bold rounded-xl transition duration-200' href='{{path('app_login')}}'>Connexion</a>
-
 	{% else %}
-
 		<!-- Dropdown User -->
 		<div class='hidden lg:flex z-10'>
 			<div class='group inline-block relative'>
-				<button class='bg-yellow-400 text-black py-2 px-4 inline-flex items-center rounded-tr-2xl rounded-tl-2xl'>
+				<button class='bg-yellow-400 text-black py-2 px-4 inline-flex items-center rounded-2xl'>
 					<span class='mr-1'>Hey
 						{{app.user.username }}!</span>
 					<svg class='fill-current h-4 w-4 text-red-600' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 20 20'>
 						<path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/>
 					</svg>
 				</button>
-				<ul class='absolute hidden text-black group-hover:block'>
-					<li class=''>
-						<a class='bg-neutral-200 hover:bg-white py-2 px-4 whitespace-no-wrap flex items-center gap-2' href='{{path('app_profile')}}'>
-							<img src='{{ asset('images/icons/user-ico.svg')}}' alt='user-icon' class='w-4 h-4'>
-							Compte</a>
-					</li>
-					<li class=''>
-						<a class='bg-neutral-200 hover:bg-white py-2 px-4 whitespace-no-wrap flex items-center gap-2' href='/admin'>
-							<img src='{{ asset('images/icons/dashboard-ico.svg')}}' alt='dashboard-icon' class='w-4 h-4'>
-							Admin</a>
-					</li>
-					<li class=''>
-						<a class='bg-neutral-200 hover:bg-white py-2 px-4 whitespace-no-wrap flex items-center gap-2 rounded-bl-2xl rounded-br-2xl' href='{{path('app_logout')}}'>
-							<img src='{{ asset('images/icons/logout-ico.svg')}}' alt='logout-icon' class='w-4 h-4'>
-							Déconnexion
-						</a>
-					</li>
-				</ul>
+				<button class='absolute hidden text-black group-hover:block'>
+					<a class='bg-neutral-200 hover:bg-white py-2 px-4 whitespace-no-wrap flex items-center gap-2 rounded-t-lg' href='{{path('app_profile')}}'>
+						<img src='{{ asset('images/icons/user-ico.svg')}}' alt='user-icon' class='w-4 h-4'>
+						Compte</a>
+					<a class='bg-neutral-200 hover:bg-white py-2 px-4 whitespace-no-wrap flex items-center gap-2' href='/admin'>
+						<img src='{{ asset('images/icons/dashboard-ico.svg')}}' alt='dashboard-icon' class='w-4 h-4'>
+						Admin</a>
+					<a class='bg-neutral-200 hover:bg-white py-2 px-4 whitespace-no-wrap flex items-center gap-2 rounded-b-lg' href='{{path('app_logout')}}'>
+						<img src='{{ asset('images/icons/logout-ico.svg')}}' alt='logout-icon' class='w-4 h-4'>
+						Déconnexion
+					</a>
+				</button>
 			</div>
 			<!-- End Dropdown User -->
 		{% endif %}
-
-	</nav>
-
-	<!-- Responsive Menu -->
-	<div class='navbar-menu relative z-50 hidden w-full overflow-x-hidden'>
+	</nav><!-- Responsive Menu --><div class='navbar-menu relative z-50 hidden w-full overflow-x-hidden'>
 		<nav
 			aria-label='menu-bar' class='fixed top-0 left-0 bottom-0 flex flex-col w-full py-6 px-6 bg-black border-r overflow-y-auto'>
 			<!-- Logo and title -->
@@ -190,5 +148,4 @@
 			</div>
 		</nav>
 	</div>
-
 	<script src="{{ asset('js/navbar.js') }}"></script>

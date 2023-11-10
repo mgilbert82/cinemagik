@@ -1,0 +1,16 @@
+<div class='flex flex-col items-center justify-between'>
+	<div class='group inline-block relative'>
+		<button class='inline-flex items-center'>
+			<span class='text-xl font-anton text-yellow-400 uppercase tracking-wider'>SVOD</span>
+			<svg class='fill-current h-4 w-4 text-red-600' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 20 20'>
+				<path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/>
+			</svg>
+		</button>
+		<div class='absolute hidden text-white group-hover:block w-[120px] rounded-lg'>
+			{% for source in sources %}
+				<a class='block bg-[#1C1917] hover:bg-white hover:text-black py-2 px-4 whitespace-no-wrap text-center' href='{{path('app_source')}}/{{source.slug}}'>
+					{{source.name}}</a>
+			{% endfor %}
+		</div>
+	</div>
+</div>

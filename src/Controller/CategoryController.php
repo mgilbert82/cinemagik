@@ -23,7 +23,7 @@ class CategoryController extends AbstractController
     }
 
     #[Route('categories/', name: 'app_category')]
-    public function getCategoriesName(CategoryRepository $categoryRepository): Response
+    public function index(CategoryRepository $categoryRepository): Response
     {
         $categories = $categoryRepository->findAll();
 
