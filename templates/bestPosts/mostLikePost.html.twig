@@ -5,20 +5,18 @@
 
 {% block body %}
 	<div class='container mx-auto'>
-		<span class='flex items-center  gap-2'>
+		<span class='flex items-center gap-2'>
 			<img src='/images/icons/like-ico.svg' alt='cator-icon' class='w-6 h-6'>
 			<h1>Nos coups de coeurs</h1>
 		</span>
 		<blockquote class='border-l-4 border-r-4 border-yellow-400 p-4 m-4 text-italic text-gray-700 bg-gray-100 rounded-lg'>
 			Dans l'éclat des projecteurs, l'amour du cinéma s'éveille,
-												Sur l'écran, des émotions tissent une toile, merveille.
-												Coups de cœur en séquences, des passions qui scintillent.
+																					Sur l'écran, des émotions tissent une toile, merveille.
+																					Coups de cœur en séquences, des passions qui scintillent.
 		</blockquote>
 		<div class='grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4'>
 			{% for post in posts %}
-				<div class='mx-4 relative'>
-					{% include 'post/postCard.html.twig' %}
-				</div>
+				{% include 'post/postCard.html.twig' %}
 			{% endfor %}
 		</div>
 	</div>
