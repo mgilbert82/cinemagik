@@ -43,6 +43,14 @@ class PostRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findPostsWithRateGreaterThanSeven()
+    {
+        return $this->createQueryBuilder('p')
+            ->Where('p.rate > 7')
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return Post[] Returns an array of Post objects
     //     */
