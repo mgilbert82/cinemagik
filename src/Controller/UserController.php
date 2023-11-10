@@ -23,7 +23,7 @@ class UserController extends AbstractController
         public UserPasswordHasherInterface $passwordHasher,
     ) {
     }
-    #[Route('/register', name: 'app_register')]
+    #[Route('/creer-son-compte', name: 'app_register')]
     public function register(Request $request): Response
     {
 
@@ -76,7 +76,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/login', name: 'app_login')]
+    #[Route(path: '/se-connecter', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         // get the login error if there is one
@@ -87,19 +87,19 @@ class UserController extends AbstractController
         return $this->render('user/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
-    #[Route(path: '/logout', name: 'app_logout')]
+    #[Route(path: '/se-deconnecter', name: 'app_logout')]
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 
-    #[Route('/profile', name: 'app_profile')]
+    #[Route('/mon-compte', name: 'app_profile')]
     public function index()
     {
         return $this->render('user/userProfile.html.twig', []);
     }
 
-    #[Route('/profile/edit', name: 'app_edit_profile')]
+    #[Route('/mon-compte/modifier', name: 'app_edit_profile')]
     public function editProfile(Request $request)
     {
         $user = $this->getUser();
@@ -120,7 +120,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/profile/edit/avatar', name: 'app_edit_avatar')]
+    #[Route('/mon-compte/modifier/avatar', name: 'app_edit_avatar')]
     public function editAvatar(Request $request)
     {
         $user = $this->entityManager->find(User::class, $this->getUser());
@@ -129,33 +129,24 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // $file = $request->files->get('edit_avatar')['avatar'];
-
             //Gestion de l'avatar
             $avatarFile = $form->get('avatar')->getData();
+
             //Dossier d'upload
             $upload_directory = $this->getParameter('avatars_directory');
-            //Renommer le fichier
-            //$newFilename = md5(uniqid()) . '.' . $avatarFile->guessExtension();
 
-            // $avatarFile->move(
-            //     $upload_directory,
-            //     $newFilename
-            // );
-            // echo "<pre>";
-            // var_dump($newFilename);
-            // die;
+            //Renommer le fichier
             if ($avatarFile) {
                 $newFilename = md5(uniqid()) . '.' . $avatarFile->guessExtension();
 
-                //Déplacez le fichier vers le répertoire où vous souhaitez le stocker
+                //Déplacez le fichier vers le repertoire
                 try {
                     $avatarFile->move(
                         $upload_directory,
                         $newFilename
                     );
 
-                    //Enregistrez le nom du fichier de l'avatar dans la base de données
+                    //Enregistrer le nom du fichier de l'avatar dans la base de données
                     $user->setAvatar($newFilename);
 
                     $this->entityManager->persist($user);
@@ -178,7 +169,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/profile/edit/pwd', name: 'app_edit_password')]
+    #[Route('/mon-compte/modifier/mot-de-passe', name: 'app_edit_password')]
     public function editPassword(Request $request): Response
     {
         $user = $this->entityManager->find(User::class, $this->getUser());

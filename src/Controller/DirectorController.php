@@ -22,7 +22,7 @@ class DirectorController extends AbstractController
         ]);
     }
 
-    #[Route('realisateurs/', name: 'app_director')]
+    #[Route('/realisateurs', name: 'app_director')]
     public function getDirectorsName(DirectorRepository $directorRepo)
     {
 

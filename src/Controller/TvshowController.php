@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TvshowController extends AbstractController
 {
-    #[Route('/serieTV', name: 'app_tvshow')]
+    #[Route('/series-tv', name: 'app_tvshow')]
     public function index(PostRepository $postRepo): Response
     {
         $tvShow = $postRepo->findBy(['type' => 'TVSHOW']);

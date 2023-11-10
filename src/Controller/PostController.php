@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PostController extends AbstractController
 {
-    #[Route('/post/{slug}', name: 'post_detail')]
+    #[Route('/article/{slug}', name: 'post_detail')]
     public function index(?Post $post): Response
     {
         if (!$post) {
