@@ -1,20 +1,20 @@
 <aside class='bg-black p-4 w-full rounded-lg'>
-	<h3>Nos autres sections</h3>
-	<ul class='underline p-2 text-sm'>
-		<li class='my-1'>
-			<a href='/realisateurs' class='flex items-center gap-2'>
-				<img src='/images/icons/director-ico.svg' alt='director-icon' class='w-6 h-86'>
-				Réalisateurs</a>
-		</li>
-		<li class='my-1'>
-			<a href='/acteurs' class='flex items-center gap-2'>
-				<img src='/images/icons/actor-ico.svg' alt='cator-icon' class='w-6 h-6'>
-				Acteurs</a>
-		</li>
-		<li class='my-1'>
-			<a href='/categories' class='flex items-center gap-2'>
-				<img src='/images/icons/category-ico.svg' alt='category-icon' class='w-6 h-6'>
-				Catégories</a>
-		</li>
-	</ul>
+	<h3 class='my-2'>Filtres</h3>
+
+	<div class='flex flex-col gap-2 p-2 text-md'>
+		<a href='{{path('post_bestRate')}}' class=' flex items-center gap-2'>
+			<img src='/images/icons/like-ico.svg' alt='category-icon' class='w-6 h-6'>
+			Nos coups de coeurs</a>
+		<a href='{{path('app_director')}}' class='flex items-center gap-2'>
+			<img src='/images/icons/director-ico.svg' alt='director-icon' class='w-6 h-86'>
+			Réalisateurs</a>
+
+		<a href='{{path('app_actor')}}' class='flex items-center gap-2'>
+			<img src='/images/icons/actor-ico.svg' alt='cator-icon' class='w-6 h-6'>
+			Acteurs</a>
+
+		<a href='{{path('app_category')}}' class='flex items-center gap-2'>
+			<img src='/images/icons/category-ico.svg' alt='category-icon' class='w-6 h-6'>
+			Genres</a>
+	</div>
 </aside>
