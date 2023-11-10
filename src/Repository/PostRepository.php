@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Actor;
+use App\Entity\Category;
 use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -49,6 +51,19 @@ class PostRepository extends ServiceEntityRepository
             ->Where('p.rate > 7')
             ->getQuery()
             ->getResult();
+    }
+
+    public function findForPagination(?Category $category  = null): Query
+    {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->orderBy('p.createdAt', 'DESC');
+
+        if ($category) {
+            $queryBuilder->leftJoin('p.categories', 'c')
+                ->where($queryBuilder->expr()->eq('c.id', ':categoryId'))
+                ->setParameter('categoryId', $category->getId());
+        }
+        return $queryBuilder->getQuery();
     }
 
     //    /**

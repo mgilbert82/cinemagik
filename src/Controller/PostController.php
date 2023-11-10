@@ -6,6 +6,7 @@ use App\Entity\Comment;
 use App\Entity\Post;
 use App\Form\Type\CommentType;
 use App\Repository\PostRepository;
+use App\Service\CommentService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostController extends AbstractController
 {
     #[Route('/article/{slug}', name: 'post_detail')]
-    public function index(?Post $post): Response
+    public function index(?Post $post, CommentService $commentService): Response
     {
         if (!$post) {
             return $this->redirectToRoute('app_home');
@@ -25,9 +26,11 @@ class PostController extends AbstractController
 
         return $this->render('post/postDetail.html.twig', [
             'post' => $post,
+            'comments' => $commentService->getPaginatedComments($post),
             'commentForm' => $commentForm
         ]);
     }
+
     #[Route('/noscoupsdecoeur', name: 'post_bestRate')]
     public function getPostsWithRateGreaterThanSeven(PostRepository $postRepository): Response
     {

@@ -1,15 +1,14 @@
 {% set user = comment.author %}
 
-<div class='grid grid-cols-1 gap-2 mx-4 my-2 p-2 rounded-lg bg-neutral-100 shadow-lg'>
+<div class='grid grid-cols-1 gap-1 m-2 p-1 rounded-lg bg-neutral-100 shadow-lg'>
 	<div class='flex items-center gap-2 p-2'>
 		{% if post.user.avatar is not empty %}
-			<img src='/uploads/avatars/{{user.avatar}}' class='rounded-full object-cover h-10 w-10 border-2 border-white' alt='' loading='lazy'>
+			<img src='/uploads/avatars/{{user.avatar}}' class='rounded-full object-cover h-8 w-8 border-2 border-yellow-400' alt='' loading='lazy'>
 		{% endif %}
-		<p class='text-sm text-red-600'>{{user.username}}
-		</p>
-		<p class='text-sm text-red-600'>
-			|</p>
-		<p class='text-sm text-red-600'>{{comment.createdAt|date('d/m/y à H:i:s')}}</p>
+		<span class='text-sm text-red-600'>{{user.username}}
+			-
+			{{comment.createdAt|date('d/m/y à H:i:s')}}
+		</span>
 	</div>
-	<p class='p-2 -my-4 mb-2 text-gray-500' id='comment_message'>{{comment.message}}</p>
+	<span class='mb-2 ml-2 text-gray-500 text-sm' id='comment_message'>{{comment.message}}</span>
 </div>

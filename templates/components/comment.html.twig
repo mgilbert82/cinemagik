@@ -1,7 +1,7 @@
 <div
-	class='grid grid-flow-rows gap-1 p-4 m-4 bg-black rounded-lg shadow-lg'>
+	class='grid grid-flow-rows gap-1 p-3 m-2 bg-black rounded-lg shadow-lg'>
 	<!-- Number of Comment -->
-	<span class='ml-2 text-anton text-lg text-yellow-400 flex items-center gap-2' id='comment-count'>
+	<span class='ml-2 text-anton text-lg text-yellow-400 flex items-center gap-2 my-2' id='comment-count'>
 		<img src='/images/icons/comment-ico.svg' alt='comment-icon' class='w-8 h-8'>
 		<h3 id='comment-count'>{{ post.comments|length }}
 			commentaire(s)</h3>
@@ -19,8 +19,8 @@
 	{% else %}
 		<!-- Registration Button -->
 		<span class='m-2 p-2 text-sm'>Connectez-vous, pour écrire un commentaire!</span>
-		<span class='mx-4 pt-4'>
-			<a href="{{ path('app_login') }}" class='bg-yellow-400 text-black font-semibold rounded-lg p-4 text-center'>
+		<span class='mx-auto pt-4'>
+			<a href="{{ path('app_login') }}" class='bg-yellow-400 text-black font-semibold rounded-lg p-2 text-center'>
 				Se connecter
 			</a>
 		</span>
@@ -29,8 +29,14 @@
 
 	<!-- Comment List -->
 	<div class='my-4 comment-list '>
-		{% for comment in post.comments %}
+		{% for comment in comments %}
 			{% include 'comment/showComment.html.twig' with {'comment': comment} %}
 		{% endfor %}
+		<div class='container pt-4'>
+			<div class='row'>
+				<div class='flex items-center justify-center'>
+					{{ knp_pagination_render(comments) }}</div>
+			</div>
+		</div>
 	</div>
 </div>
