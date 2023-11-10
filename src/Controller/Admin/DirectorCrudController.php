@@ -23,8 +23,7 @@ class DirectorCrudController extends AbstractCrudController
         return $crud->setPageTitle('index', 'Les réalisateurs')
             ->setPageTitle('edit', 'Modifier un réalisateur')
             ->setEntityLabelInPlural('Les réalisateurs')
-            ->setEntityLabelInSingular('un réalisateur')
-            ->setSearchFields(null);
+            ->setEntityLabelInSingular('un réalisateur');
     }
 
     public function configureFields(string $pageName): iterable
@@ -36,7 +35,7 @@ class DirectorCrudController extends AbstractCrudController
         yield DateField::new('dateOfBirth', 'Date de naissance');
         yield AssociationField::new('featImg', 'Photo')
             ->hideOnIndex();
-        yield TextareaField::new('featText', 'Texte mis en avant')
+        yield TextareaField::new('featText', 'Biographie')
             ->hideOnIndex();
         yield DateField::new('createdAt', 'Création')
             ->hideOnForm();

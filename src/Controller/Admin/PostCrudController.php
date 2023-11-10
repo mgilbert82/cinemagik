@@ -26,8 +26,7 @@ class PostCrudController extends AbstractCrudController
         return $crud->setPageTitle('index', 'Les articles')
             ->setPageTitle('edit', 'Modifier l\'article')
             ->setEntityLabelInPlural('Les articles')
-            ->setEntityLabelInSingular('l\'article')
-            ->setSearchFields(null);
+            ->setEntityLabelInSingular('un article');
     }
 
 
@@ -40,7 +39,7 @@ class PostCrudController extends AbstractCrudController
             ->hideOnIndex();
         yield DateField::new('releaseDate', 'Date de sortie')
             ->hideOnIndex();
-        yield IntegerField::new('rate', 'Note')
+        yield IntegerField::new('rate', 'Note (sur 10)')
             ->setFormTypeOptions([
                 'constraints' => [
                     new Range(['min' => 1, 'max' => 10])
@@ -51,7 +50,7 @@ class PostCrudController extends AbstractCrudController
             ->setTargetFieldName('title')
             ->hideOnIndex();
 
-        yield TextField::new('featText', 'Texte mise en avant')
+        yield TextField::new('featText', 'Texte mis en avant')
             ->hideOnIndex();
         yield TextField::new('trailerUrl', 'Lien bande annonce')
             ->hideOnIndex();
@@ -66,12 +65,12 @@ class PostCrudController extends AbstractCrudController
             ]);
         yield AssociationField::new('featImg', 'Affiche/image')
             ->hideOnIndex();
-        yield AssociationField::new('category', 'Genres')
+        yield AssociationField::new('category', 'Genre')
             ->hideOnIndex();
         yield AssociationField::new('director', 'Réalisateur');
         yield AssociationField::new('actors', 'Les acteurs')
             ->hideOnIndex();
-        yield AssociationField::new('source', 'Plateforme');
+        yield AssociationField::new('source', 'Plateforme VOD');
         yield TextEditorField::new('content')
             ->setLabel('Synopsis')
             ->hideOnIndex();

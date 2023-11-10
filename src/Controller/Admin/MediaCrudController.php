@@ -21,8 +21,7 @@ class MediaCrudController extends AbstractCrudController
         return $crud->setPageTitle('index', 'Les médias')
             ->setPageTitle('edit', 'Modifier une image')
             ->setEntityLabelInPlural('Les images')
-            ->setEntityLabelInSingular('une image')
-            ->setSearchFields(null);
+            ->setEntityLabelInSingular('une image');
     }
 
     public function configureFields(string $pageName): iterable

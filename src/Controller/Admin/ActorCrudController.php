@@ -23,8 +23,7 @@ class ActorCrudController extends AbstractCrudController
         return $crud->setPageTitle('index', 'Les acteurs')
             ->setPageTitle('edit', 'Modifier un acteur')
             ->setEntityLabelInPlural('Les acteurs')
-            ->setEntityLabelInSingular('un acteur')
-            ->setSearchFields(null);
+            ->setEntityLabelInSingular('un acteur');
     }
 
     public function configureFields(string $pageName): iterable
@@ -36,7 +35,7 @@ class ActorCrudController extends AbstractCrudController
         yield DateField::new('dateOfBirth', 'Date de naissance');
         yield AssociationField::new('featImg', 'Photo')
             ->hideOnIndex();
-        yield TextareaField::new('featText', 'Texte mis en avant')
+        yield TextareaField::new('featText', 'Biographie')
             ->hideOnIndex();
         yield DateField::new('createdAt', 'Création')
             ->hideOnForm();

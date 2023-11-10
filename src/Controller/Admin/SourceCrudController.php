@@ -23,8 +23,7 @@ class SourceCrudController extends AbstractCrudController
         return $crud->setPageTitle('index', 'Les plateformes')
             ->setPageTitle('edit', 'Modifier une plateforme')
             ->setEntityLabelInPlural('Les plateformes')
-            ->setEntityLabelInSingular('une plateforme')
-            ->setSearchFields(null);
+            ->setEntityLabelInSingular('une plateforme');
     }
 
     public function configureFields(string $pageName): iterable
@@ -37,7 +36,7 @@ class SourceCrudController extends AbstractCrudController
             ->hideOnIndex();
         yield AssociationField::new('featImg', 'Image')
             ->hideOnIndex();
-        yield TextField::new('link', "Url de la plateform")
+        yield TextField::new('link', "Lien vers la plateforme")
             ->hideOnIndex();
         yield ColorField::new('color', 'Couleur');
         yield DateField::new('createdAt', 'Création')

@@ -24,8 +24,7 @@ class CategoryCrudController extends AbstractCrudController
         return $crud->setPageTitle('index', 'Les genres')
             ->setPageTitle('edit', 'Modifier un genre')
             ->setEntityLabelInPlural('Les genres')
-            ->setEntityLabelInSingular('un genre')
-            ->setSearchFields(null);
+            ->setEntityLabelInSingular('un genre');
     }
 
     public function configureFields(string $pageName): iterable
