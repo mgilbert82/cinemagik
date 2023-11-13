@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Films par réalisateur |
+{% block title %}
+	{{pageTitle}}
+	Films de
 	{{ director.name}}
 {% endblock %}
 
@@ -18,7 +20,7 @@
 			</div>
 		</div>
 	</div>
-	<div class='grid lg:grid-cols-4 justify-center gap-2'>
+	<div class='grid lg:grid-cols-4 sm:grid-cols-2 justify-center gap-2 m-4'>
 		{% for post in posts %}
 			{% include 'post/postCard.html.twig' %}
 		{% endfor %}

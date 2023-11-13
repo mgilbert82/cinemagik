@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nos coups de coeur
+{% block title %}
+	{{pageTitle}}
+	Nos coups de coeur
 {% endblock %}
 
 {% block body %}
@@ -11,8 +13,8 @@
 		</span>
 		<blockquote class='border-l-4 border-r-4 border-yellow-400 p-4 m-4 text-italic text-gray-700 bg-gray-100 rounded-lg'>
 			Dans l'éclat des projecteurs, l'amour du cinéma s'éveille,
-																					Sur l'écran, des émotions tissent une toile, merveille.
-																					Coups de cœur en séquences, des passions qui scintillent.
+																								Sur l'écran, des émotions tissent une toile, merveille.
+																								Coups de cœur en séquences, des passions qui scintillent.
 		</blockquote>
 		<div class='grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4'>
 			{% for post in posts %}

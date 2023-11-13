@@ -61,13 +61,14 @@ class RegistrationFormType extends AbstractType
                 ],
                 'attr' => [
                     'class' => 'my-4 p-2 w-full rounded-lg text-black bg-[#F8FAFC]',
-                    'placeholder' => 'Username',
+                    'placeholder' => 'Nom',
 
                 ],
 
             ])
             ->add('avatar', FileType::class, [
                 'label' => 'Choisir son avatar',
+                'required' => true,
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'mapped' => false,
@@ -76,14 +77,14 @@ class RegistrationFormType extends AbstractType
                     'label' => false,
                     'attr' => [
                         'class' => 'my-4 p-2 w-full rounded-lg text-black bg-[#F8FAFC]',
-                        'placeholder' => 'Password',
+                        'placeholder' => 'Mot de passe',
                     ],
                 ],
                 'second_options' => [
                     'label' => false,
                     'attr' => [
                         'class' => 'my-4 p-2 w-full rounded-lg text-black bg-[#F8FAFC]',
-                        'placeholder' => 'Repeat the password',
+                        'placeholder' => 'Confirmer votre mot de passe',
 
                     ],
                 ],

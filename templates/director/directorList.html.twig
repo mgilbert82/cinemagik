@@ -1,24 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Réalisateurs
+{% block title %}
+	{{pageTitle}}
+	Les réalisateurs
 {% endblock %}
 
 {% block body %}
-	<div class='container mx-auto'>
-		<span class='flex items-center  gap-2'>
+	<div class='container mx-auto my-10'>
+		<div class='flex items-center gap-2'>
 			<img src='/images/icons/director-ico.svg' alt='cator-icon' class='w-6 h-6'>
 			<h1>Les Réalisateurs</h1>
-		</span>
+		</div>
 		<blockquote class='border-l-4 border-r-4 border-yellow-400 p-4 m-4 text-italic text-gray-700 bg-gray-100 rounded-lg'>
-			"Dans l'obscurité, ils tissent des rêves en images.
-															Chaque plan devient une fenêtre sur des paysages sauvages.
-															Les réalisateurs, artisans de contes magiques."
+			"Dans l'obscurité, ils tissent des rêves en images. Chaque plan devient une fenêtre sur des paysages sauvages. Les réalisateurs, artisans de contes magiques."
 		</blockquote>
-		<div class='grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4'>
+		<div class='grid lg:grid-cols-4 sm:grid-cols-2 gap-4'>
 			{% for director in directors %}
-				<div class='mx-4 relative'>
-					{% include 'director/directorCard.html.twig' %}
-				</div>
+				{% include 'director/directorCard.html.twig' %}
 			{% endfor %}
 		</div>
 	</div>

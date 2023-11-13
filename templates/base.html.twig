@@ -1,9 +1,12 @@
+{% set pageTitle = "CINEMAGIK -" %}
+
 <!DOCTYPE html>
 <html lang='fr'>
 	<head>
 		<meta charset='UTF-8'>
 		<title>
-			{% block title %}CINEMAGIK -
+			{% block title %}
+				{{pageTitle}}
 			{% endblock %}
 		</title>
 		<link rel='icon' href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>'>
@@ -23,7 +26,7 @@
 				{% include 'components/navbar.html.twig' %}
 			</header>
 
-			<main class='flex-grow mt-10 pt-10'>
+			<main class='flex-grow mt-10 pt-10 my-10'>
 				{% block body %}
 					<!-- Content -->
 				{% endblock %}

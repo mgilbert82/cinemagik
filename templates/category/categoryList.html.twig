@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Films par Catégories
+{% block title %}
+	{{pageTitle}}
+	Les genres
 {% endblock %}
 
 {% block body %}
 
 	{# {{dump(categories)}} #}
-	<div class='container mx-auto'>
-		<div class='grid lg:grid-cols-4 justify-center gap-2'>
+	<div class='container mx-auto my-10'>
+		<div class='grid lg:grid-cols-4 sm:grid-cols-2 justify-center gap-2'>
 			{% for category in categories %}
 				{% include 'category/categoryCard.html.twig' %}
 			{% endfor %}

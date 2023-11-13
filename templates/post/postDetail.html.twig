@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{post.title}}
+	{{pageTitle}}
+	{{post.type == 'TVSHOW' ? 'Serie ':'Film '}}:{{post.title}}
 {% endblock %}
 
 {% block body %}
@@ -11,7 +12,7 @@
 			<!-- post sections -->
 			<div class='lg:col-span-3 flex p-2 items-stretch'>
 				<img src="{{ ('/uploads/' ~ post.featImg.filename) | imagine_filter('cardimg') }}" alt="{{ post.slug }}" class='w-1/2 object-cover rounded-tl-lg rounded-bl-lg'>
-				<div class='p-4 bg-black rounded-tr-lg rounded-br-lg flex-1 justify-between'>
+				<div class='p-4 bg-black rounded-tr-lg rounded-br-lg flex-1 justify-between px-6'>
 					<div class='flex flex-shrink-0 justify-between items-center'>
 						<span class='flex-1 flex items-center'>
 							<h1 class='text-left tracking-wider mr-4'>{{ post.title }}</h1>
