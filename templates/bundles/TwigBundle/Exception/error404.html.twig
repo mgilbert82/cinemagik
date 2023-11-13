@@ -1,0 +1,15 @@
+{% extends 'bundles/TwigBundle/Exception/index.html.twig' %}
+{% block title %}
+	Page introuvable
+{% endblock %}
+{% block message %}
+	Page introuvable
+{% endblock %}
+{% block description %}
+	<div class='mx-auto flex flex-col my-4'>
+		<p class='my-2 text-center'>Cette page est inaccessible, Désolé !</p>
+		<div class='w-full mx-4'>
+			<img src='/images/erreur-404.jpeg' alt='erreur-404' class='w-[400px] h-[400px] object-cover rounded-full mx-auto shadow-lg shadow-black'>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'bundles/TwigBundle/Exception/index.html.twig' %}
+{% block title %}
+	Accès refusé
+{% endblock %}
+{% block message %}
+	Accès refusé
+{% endblock %}
+{% block description %}
+	<div class='mx-auto flex flex-col my-4'>
+		<p class='my-2 text-center'>
+			Vous n'êtes pas autorisé à voir cette ressource
+		</p>
+		<div class='w-full mx-4'>
+			<img src='/images/erreur-403.jpeg' alt='erreur-403' class='w-[400px] h-[400px] object-cover rounded-full mx-auto shadow-lg shadow-black'>
+		</div>
+	</div>
+{% endblock %}
