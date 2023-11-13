@@ -39,7 +39,7 @@ class App {
     if (json.code === "COMMENT_ADDED_SUCCESSFULLY") {
       const elementsToUpdate = {
         commentList: document.querySelector(".comment-list"),
-        commentCount: document.querySelector("#comment-count"),
+        commentCount: document.querySelector("#comment_count"),
         commentMessage: document.querySelector("#comment_message"),
       };
 

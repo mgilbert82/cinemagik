@@ -36,15 +36,22 @@ class UserController extends AbstractController
             //Gestion de l'avatar
             $avatarFile = $form->get('avatar')->getData();
 
-            if ($avatarFile) {
-                $newFilename = uniqid() . '.' . $avatarFile->guessExtension();
+            //Dossier d'upload
+            $upload_directory = $this->getParameter('avatars_directory');
 
-                // Déplacez le fichier vers le répertoire où vous souhaitez le stocker
+            //Renommer le fichier
+            if ($avatarFile) {
+                $newFilename = md5(uniqid()) . '.' . $avatarFile->guessExtension();
+
+                //Déplacez le fichier vers le repertoire
                 try {
                     $avatarFile->move(
-                        $this->getParameter('medias_directory'),
+                        $upload_directory,
                         $newFilename
                     );
+
+                    //Enregistrer le nom du fichier de l'avatar dans la base de données
+                    $user->setAvatar($newFilename);
                 } catch (FileException $e) {
                     $this->addFlash(
                         'success',
