@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CategoryController extends AbstractController
 {
-    #[Route('/categorie/{slug}', name: 'category_posts')]
+    #[Route(path: '/categorie/{slug}', name: 'category_posts')]
     public function getCategoryPosts(Category $category, PostRepository $postRepository): Response
     {
         $categoryPosts = $postRepository->findByCategory($category);
@@ -22,7 +22,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('categories/', name: 'app_category')]
+    #[Route(path: 'categories/', name: 'app_category')]
     public function index(CategoryRepository $categoryRepository): Response
     {
         $categories = $categoryRepository->findAll();

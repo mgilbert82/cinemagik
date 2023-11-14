@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PostController extends AbstractController
 {
-    #[Route('/article/{slug}', name: 'post_detail')]
+    #[Route(path: '/article/{slug}', name: 'post_detail')]
     public function index(?Post $post, CommentService $commentService): Response
     {
         if (!$post) {
@@ -31,7 +31,7 @@ class PostController extends AbstractController
         ]);
     }
 
-    #[Route('/noscoupsdecoeur', name: 'post_bestRate')]
+    #[Route(path: '/noscoupsdecoeur', name: 'post_bestRate')]
     public function getPostsWithRateGreaterThanSeven(PostRepository $postRepository): Response
     {
 

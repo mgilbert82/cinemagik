@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DirectorController extends AbstractController
 {
-    #[Route('/realisateur/{slug}', name: 'director_posts')]
+    #[Route(path: '/realisateur/{slug}', name: 'director_posts')]
     public function directorPosts(Director $director, PostRepository $postRepository): Response
     {
         $directorPosts = $postRepository->findByDirector($director);
@@ -22,7 +22,7 @@ class DirectorController extends AbstractController
         ]);
     }
 
-    #[Route('/realisateurs', name: 'app_director')]
+    #[Route(path: '/realisateurs', name: 'app_director')]
     public function getDirectorsName(DirectorRepository $directorRepo)
     {
 

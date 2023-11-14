@@ -23,7 +23,7 @@ class UserController extends AbstractController
         public UserPasswordHasherInterface $passwordHasher,
     ) {
     }
-    #[Route('/creer-son-compte', name: 'app_register')]
+    #[Route(path: '/creer-son-compte', name: 'app_register')]
     public function register(Request $request): Response
     {
 
@@ -100,13 +100,13 @@ class UserController extends AbstractController
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 
-    #[Route('/mon-compte', name: 'app_profile')]
+    #[Route(path: '/mon-compte', name: 'app_profile')]
     public function index()
     {
         return $this->render('user/userProfile.html.twig', []);
     }
 
-    #[Route('/mon-compte/modifier', name: 'app_edit_profile')]
+    #[Route(path: '/mon-compte/modifier', name: 'app_edit_profile')]
     public function editProfile(Request $request)
     {
         $user = $this->getUser();
@@ -127,7 +127,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/mon-compte/modifier/avatar', name: 'app_edit_avatar')]
+    #[Route(path: '/mon-compte/modifier/avatar', name: 'app_edit_avatar')]
     public function editAvatar(Request $request)
     {
         $user = $this->entityManager->find(User::class, $this->getUser());
@@ -176,7 +176,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/mon-compte/modifier/mot-de-passe', name: 'app_edit_password')]
+    #[Route(path: '/mon-compte/modifier/mot-de-passe', name: 'app_edit_password')]
     public function editPassword(Request $request): Response
     {
         $user = $this->entityManager->find(User::class, $this->getUser());

@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SourceController extends AbstractController
 {
-    #[Route('/svod/{slug}', name: 'source_posts')]
+    #[Route(path: '/svod/{slug}', name: 'source_posts')]
     public function sourcePosts(Source $source, EntityManagerInterface $entityManager): Response
     {
         $sourceId = $source->getId();
@@ -26,7 +26,7 @@ class SourceController extends AbstractController
         ]);
     }
 
-    #[Route('/svod', name: 'app_source')]
+    #[Route(path: '/svod', name: 'app_source')]
     public function getSourcesName(SourceRepository $sourceRepository): Response
     {
 
