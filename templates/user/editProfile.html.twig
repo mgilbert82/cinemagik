@@ -6,17 +6,23 @@
 
 {% block body %}
 	<div class='lg:w-1/2 mx-auto px-4 my-10'>
-		<h1 class='mb-4'>{% trans %}Modification du profil de{% endtrans %}
+
+
+		<span class='bg-yellow-400 rounded-full p-2 mb-8 text-black'>
+			<a href="{{path('app_profile')}}">&#11153; Retour à mon compte</a>
+		</span>
+
+		<h1 class='mt-10 my-4'>{% trans %}Modification du profil de{% endtrans %}
 			{{ app.user.username }}</h1>
 
 		<div class='flex flex-col gap-4'>
-			<div class='grid grid-flow-rows gap-2 mb-4  bg-black p-4 rounded-lg'>
+			<div class='grid grid-flow-rows gap-2 mb-4 lg:w-1/2 w-full mx-auto bg-black p-4 rounded-lg'>
 
 				<h2>Identifiants</h2>
 				{{ form_start(form) }}
 				{{ form_row(form.username) }}
 				{{ form_row(form.email) }}
-				<button type='submit' class='bg-yellow-400 text-black text-center font-semibold p-2 my-4 rounded-lg uppercase'>{% trans %}update{% endtrans %}</button>
+				<button type='submit' class='bg-yellow-400 text-black text-center p-2 my-4 rounded-lg float-right'>Mettre à jour</button>
 				{{ form_end(form) }}
 			</div>
 		</div>

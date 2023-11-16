@@ -35,7 +35,7 @@ class EditAvatarType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider',
                 'attr' => [
-                    'class' => 'bg-yellow-400 text-black text-center p-2 rounded-lg',
+                    'class' => 'bg-yellow-400 text-black text-center float-right p-2 rounded-lg',
                 ],
             ]);
 

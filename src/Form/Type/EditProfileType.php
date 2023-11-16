@@ -17,18 +17,24 @@ class EditProfileType extends AbstractType
             ->add(
                 'email',
                 EmailType::class,
-                ['attr' => [
-                    'class' => 'my-4 p-2 w-full rounded-lg text-black bg-[#F8FAFC]',
-                    'placeholder' => 'Email',
-                ],]
+                [
+                    'label' => 'Email',
+                    'attr' => [
+                        'class' => 'my-4 p-2 w-full rounded-lg text-black bg-[#F8FAFC]',
+                        'placeholder' => 'Email',
+                    ],
+                ]
             )
             ->add(
                 'username',
                 TextType::class,
-                ['attr' => [
-                    'class' => 'my-4 p-2 w-full rounded-lg text-black bg-[#F8FAFC]',
-                    'placeholder' => 'Email',
-                ],]
+                [
+                    'label' => 'Nom d\'utilisateur',
+                    'attr' => [
+                        'class' => 'my-4 p-2 w-full rounded-lg text-black bg-[#F8FAFC]',
+                        'placeholder' => 'Nom d\'utilisateur',
+                    ],
+                ]
             );
     }
 

@@ -1,19 +1,18 @@
-<aside class='bg-black p-4 w-full rounded-lg'>
+<aside class='bg-black p-4 rounded-lg'>
 	<h3 class='my-2'>Filtres</h3>
-
-	<div class='flex flex-col gap-2 p-2 text-md'>
-		<a href='{{path('post_bestRate')}}' class=' flex items-center gap-2'>
+	<div class='flex lg:flex-col lg:items-start justify-between gap-2 text-md'>
+		<a href='{{path('post_bestRate')}}' class='w-full flex lg:flex-row flex-col items-center lg:justify-start justify-center gap-2 rounded-lg p-2 border border-yellow-400 hover:bg-red-600 hover:border-black'>
 			<img src='/images/icons/like-ico.svg' alt='category-icon' class='w-6 h-6'>
 			Nos coups de coeurs</a>
-		<a href='{{path('app_director')}}' class='flex items-center gap-2'>
+		<a href='{{path('app_director')}}' class='w-full flex lg:flex-row flex-col items-center lg:justify-start justify-center gap-2 rounded-lg p-2 border border-yellow-400 hover:bg-red-600 hover:border-black'>
 			<img src='/images/icons/director-ico.svg' alt='director-icon' class='w-6 h-86'>
 			Réalisateurs</a>
 
-		<a href='{{path('app_actor')}}' class='flex items-center gap-2'>
+		<a href='{{path('app_actor')}}' class='w-full flex lg:flex-row flex-col items-center lg:justify-start justify-center gap-2 rounded-lg p-2 border border-yellow-400 hover:bg-red-600 hover:border-black'>
 			<img src='/images/icons/actor-ico.svg' alt='cator-icon' class='w-6 h-6'>
 			Acteurs</a>
 
-		<a href='{{path('app_category')}}' class='flex items-center gap-2'>
+		<a href='{{path('app_category')}}' class='w-full flex lg:flex-row flex-col items-center lg:justify-start justify-center gap-2 rounded-lg p-2 border border-yellow-400 hover:bg-red-600 hover:border-black'>
 			<img src='/images/icons/category-ico.svg' alt='category-icon' class='w-6 h-6'>
 			Genres</a>
 	</div>

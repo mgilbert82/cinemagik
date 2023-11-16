@@ -8,8 +8,8 @@
 
 {% block body %}
 	<div class='w-full p-4 lg:flex mx-auto mb-8'>
-		<div class='h-60 lg:h-auto lg:w-48 flex-none bg-cover rounded-tl lg:rounded-l text-center overflow-hidden' style='background-image: url("/uploads/{{director.featImg.filename }}");background-position:center' title='{{director.slug}}'></div>
-		<div class='bg-neutral-50 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal'>
+		<img src='/uploads/{{director.featImg.filename }}' alt='{{director.slug}}' class='lg:w-full lg:h-80 h-60 w-60 object-cover rounded-full lg:rounded-lg object-center border-white border-2 mx-auto my-4 lg:my-0'>
+		<div class='bg-neutral-50 p-4 flex flex-col justify-between leading-normal rounded-lg border-2 border-black'>
 			<div class='mb-4 text-gray-700'>
 				<p class='font-bold text-xl mb-2 font-anton my-4 uppercase text-gray-700'>
 					{{director.name}}

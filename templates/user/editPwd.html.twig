@@ -9,6 +9,7 @@
 
 	<div
 		class='lg:w-1/2 mx-auto px-4 my-10'>
+
 		<!-- Message flash-->
 		{% for message in app.flashes('error') %}
 			<div class='inline-flex items-center rounded-md bg-red-600 px-2 py-1 text-sm font-sm my-4 shadow-lg'>
@@ -21,7 +22,11 @@
 			</div>
 		{% endfor %}
 
-		<h1 class='mb-4 text-center'>{% trans %}Modification du mot de passe de
+		<span class='bg-yellow-400 rounded-full p-2 mb-8 text-black'>
+			<a href="{{path('app_profile')}}">&#11153; Retour à mon compte</a>
+		</span>
+
+		<h1 class='my-4 mt-10 text-center'>{% trans %}Modification du mot de passe de
 			{% endtrans %}
 			{{ app.user.username }}</h1>
 

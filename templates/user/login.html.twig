@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block body %}
-	<div class='flex items-center justify-center'>
+	<div class='flex items-center justify-center my-10'>
 		<form method='post' class='flex flex-col gap-4 w-400px bg-black p-4 rounded-lg mx-auto'>
 			{% if error %}
 				<div class='alert alert-danger'>{{ error.messageKey|trans(error.messageData, 'security') }}</div>

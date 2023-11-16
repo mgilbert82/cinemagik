@@ -1,19 +1,11 @@
 <!-- component -->
-<nav aria-label='navbar' class='relative px-4 py-4 flex justify-between items-center bg-[#1C1917] shadow-neutral-900 shadow-md'>
+<nav aria-label='navbar' class='relative px-4 py-4 flex justify-between items-center bg-[#1C1917]'>
 	<a class='text-3xl font-bold leading-none flex items-center' href='{{path('app_home')}}'>
-		<img src="{{asset('images/logo/cinemagik-logo.svg')}}" alt='logo-cinemagik' class='w-8 h-8'>
-		<span class='text-white text-xl ml-2 font-limelight'>
+		<img src="{{asset('images/logo/cinemagik-logo.svg')}}" alt='logo-cinemagik' class='w-10 h-10'>
+		<span class='text-white text-2xl ml-2 font-limelight'>
 			CINEMAGIK
 		</span>
 	</a>
-	<div class='lg:hidden'>
-		<button class='navbar-burger flex items-center text-yellow-400 p-3'>
-			<svg class='block h-4 w-4 fill-current' viewbox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
-				<title>Mobile menu</title>
-				<path d='M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z'></path>
-			</svg>
-		</button>
-	</div>
 	<div class='hidden z-50 absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6'>
 		<a class='text-xl font-anton text-yellow-400 uppercase tracking-wider border-b border-[#1C1917] hover:border-b hover:border-red-600' href='{{path('app_movies')}}'>Films</a>
 		<a class='text-xl font-anton text-yellow-400 uppercase tracking-wider border-b border-[#1C1917] hover:border-b hover:border-red-600' href='{{path('app_tvshow')}}'>Séries</a>
@@ -55,51 +47,62 @@
 				</button>
 			</div>
 			<!-- End Dropdown User -->
-		{% endif %}
-	</nav>
+		</div>
+	{% endif %}
+	<div class='lg:hidden'>
+		<button class='navbar-burger flex items-center text-yellow-400 p-4'>
+			<svg class='block h-10 w-10 fill-current' viewbox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
+				<path d='M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z'></path>
+			</svg>
+		</button>
+	</div>
 	<!-- Responsive Menu -->
 	<div class='navbar-menu relative z-50 hidden w-full overflow-x-hidden'>
 		<nav
-			aria-label='menu-bar' class='fixed top-0 left-0 bottom-0 flex flex-col w-full py-6 px-6 bg-black border-r overflow-y-auto'>
+			aria-label='menu-bar' class='fixed top-0 left-0 bottom-0 p-8 flex flex-col w-full bg-black border-r overflow-y-auto'>
+
+
 			<!-- Logo and title -->
 			<div class='flex items-center justify-between mb-8'>
-				<a class='text-3xl font-bold leading-none flex items-center' href="{{path('app_home')}}">
-					<img src="{{asset('images/logo/cinemagik-logo.svg')}}" alt='logo-cinemagik' class='w-8 h-8'>
-					<span class='text-white text-xl ml-2 font-limelight'>
+				<a class='font-bold leading-none flex items-center' href="{{path('app_home')}}">
+					<img src="{{asset('images/logo/cinemagik-logo.svg')}}" alt='logo-cinemagik' class='w-10 h-10'>
+					<span class='text-white text-[30px] ml-2 md:ml-4 font-limelight'>
 						CINEMAGIK
 					</span>
 				</a>
 				<!-- Close Button -->
 				<button class='navbar-close'>
-					<svg class='h-6 w-6 text-yellow-400 cursor-pointer hover:text-white' xmlns='http://www.w3.org/2000/svg' fill='none' viewbox='0 0 24 24' stroke='currentColor'>
+					<svg class='h-12 w-12 text-yellow-400 cursor-pointer hover:text-white' xmlns='http://www.w3.org/2000/svg' fill='none' viewbox='0 0 24 24' stroke='currentColor'>
 						<path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 18L18 6M6 6l12 12'></path>
 					</svg>
 				</button>
 			</div>
-			<!-- navbar Links -->
-			<a class='block font-anton text-xl tracking-wider uppercase text-yellow-400 border-b border-black  hover:border-b-red-600' href='{{path('app_movies')}}'>
-				Films
-			</a>
-			<a class='block font-anton text-xl tracking-wider uppercase text-yellow-400 border-b border-black hover:border-b-red-600' href='{{path('app_tvshow')}}'>
-				Séries
-			</a>
-			<!-- SVOD-->
-			{{ render(controller('App\\Controller\\SourceController::getSourcesName')) }}
-
+			<!-- Links buttons -->
+			<div
+				class='flex flex-col gap-4 justify-center mx-auto py-10'>
+				<!-- navbar Links -->
+				<a class='block font-anton text-3xl lg:text-[25px] text-center md:mb-10 px-4 py-2 tracking-wider text-yellow-400 hover:bg-yellow-400 hover:text-black' href='{{path('app_movies')}}'>
+					FILMS
+				</a>
+				<a class='block font-anton text-3xl lg:text-[25px] text-center md:mb-10 px-4 py-2 tracking-wider text-yellow-400 hover:bg-yellow-400 hover:text-black' href='{{path('app_tvshow')}}'>
+					SERIES
+				</a>
+				<!-- SVOD-->
+				{{ render(controller('App\\Controller\\SourceController::getSourcesName')) }}
+			</div>
 			<!-- footer -->
-			<div class='w-full my-10 mx-auto'>
-				<div class='flex flex-col items-center justify-between'>
+			<div class='py-52 mx-auto'>
+				<div class='flex flex-col items-center'>
 					{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-						<a class='block w-full px-4 py-3 mb-2 leading-loose text-sm text-center text-black font-semibold bg-yellow-400 rounded-full' href='{{path('app_login')}}'>
+						<a class='block w-full p-2 text-[20px] leading-loose text-center text-black font-semibold bg-yellow-400 rounded-full' href='{{path('app_login')}}'>
 							Connexion
 						</a>
 					{% else %}
-
 						<!-- Dropdown User -->
-						<div class='z-10 flex flex-col items-center w-full mx-auto'>
-							<div class='group inline-block relative w-full'>
-								<button class='bg-yellow-400 text-black py-2 px-4 inline-flex items-center rounded-full w-1/3 mx-auto'>
-									<span class='mr-1 flex items-center gap-2'>
+						<div class='z-10 flex flex-col items-center'>
+							<div class='group inline-block relative'>
+								<button class='bg-yellow-400 text-black py-2 px-4 inline-flex items-center rounded-full w-auto mx-auto'>
+									<span class='flex items-center gap-2'>
 										<img src='/uploads/avatars/{{app.user.avatar}}' alt='avatar' class='w-8 h-8 rounded-full border-2 border-white'>
 										Hey
 										{{app.user.username }}!</span>
@@ -107,7 +110,7 @@
 										<path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/>
 									</svg>
 								</button>
-								<div class='absolute hidden text-black group-hover:block w-1/3'>
+								<div class='absolute hidden text-black group-hover:block w-full mx-auto'>
 									<a class='bg-neutral-200 hover:bg-white py-2 px-4 whitespace-no-wrap flex items-center gap-2 rounded-tl-lg rounded-tr-lg' href='{{ path('app_profile') }}'>
 										<img src='{{ asset('images/icons/user-ico.svg')}}' alt='user-icon' class='w-4 h-4'>
 										Compte
@@ -118,16 +121,18 @@
 											Admin
 										</a>
 									{% endif %}
-									<a class='bg-neutral-200 hover:bg-white  py-2 px-4 whitespace-no-wrap flex items-center gap-2 rounded-bl-lg rounded-br-lg' href='{{ path('app_logout') }}'>
+									<a class='bg-neutral-200 hover:bg-white py-2 px-4 whitespace-no-wrap flex items-center gap-2 rounded-bl-lg rounded-br-lg' href='{{ path('app_logout') }}'>
 										<img src='{{ asset('images/icons/logout-ico.svg')}}' alt='logout-icon' class='w-4 h-4'>
 										Déconnexion
 									</a>
 								</div>
 							</div>
 							<!-- End Dropdown User -->
-						{% endif %}
-					</div>
+						</div>
+					{% endif %}
 				</div>
-			</nav>
-		</div>
-		<script src="{{ asset('js/navbar.js') }}"></script>
+			</div>
+		</nav>
+	</div>
+</nav>
+<script src="{{ asset('js/navbar.js') }}"></script>

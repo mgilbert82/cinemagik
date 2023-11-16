@@ -6,17 +6,16 @@
 {% endblock %}
 
 {% block body %}
-	<div class='container mx-auto'>
+	<div class='container mx-auto mt-10 lg:p-0 p-4'>
 		<span class='flex items-center gap-2'>
-			<img src='/images/icons/like-ico.svg' alt='cator-icon' class='w-6 h-6'>
+			<img src='/images/icons/like-ico.svg' alt='like-icon' class='w-8 h-8'>
 			<h1>Nos coups de coeurs</h1>
 		</span>
-		<blockquote class='border-l-4 border-r-4 border-yellow-400 p-4 m-4 text-italic text-gray-700 bg-gray-100 rounded-lg'>
-			Dans l'éclat des projecteurs, l'amour du cinéma s'éveille,
-																								Sur l'écran, des émotions tissent une toile, merveille.
-																								Coups de cœur en séquences, des passions qui scintillent.
+		<blockquote class='border-l-4 border-r-4 border-yellow-400 p-4 mx-4 my-2 text-italic text-gray-700 bg-gray-100 rounded-lg lg:w-1/2 w-2/3'>
+			"Dans l'éclat des projecteurs, l'amour du cinéma s'éveille.
+			<br>Sur l'écran, des émotions tissent une toile, merveille.<br>Coups de coeur en séquences, des passions qui scintillent."
 		</blockquote>
-		<div class='grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4'>
+		<div class='grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 my-8'>
 			{% for post in posts %}
 				{% include 'post/postCard.html.twig' %}
 			{% endfor %}

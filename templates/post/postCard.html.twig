@@ -1,6 +1,6 @@
 {% set post_detail = path('post_detail', {'slug':post.slug}) %}
 
-<div class='mx-auto lg:max-w-xl flex flex-wrap'>
+<div class='lg:max-w-xl flex flex-wrap mx-2'>
 	<a href="{{post_detail}}" class='cursor-pointer'>
 		<div class='bg-black shadow-2xl shadow-black rounded-lg'>
 			<div class='md:flex-shrink-0 relative bg-black rounded-lg lg:min-h-[150px] sm:min-h-[250px]'>
@@ -35,7 +35,7 @@
 					</a>
 				</div>
 				{% if post.user is not null and post.user is defined %}
-					<div class='flex items-center mt-auto my-2'>
+					<div class='flex items-center justify-start lg:mt-auto my-2 mt-4'>
 						{% if post.user.avatar is not null %}
 							<img class='w-10 h-10 rounded-full object-cover object-top mr-4 border-2 border-white' src='/uploads/avatars/{{post.user.avatar}}' alt='{{post.slug}}'>
 						{% endif %}

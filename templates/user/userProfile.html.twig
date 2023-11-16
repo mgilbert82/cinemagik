@@ -7,7 +7,6 @@
 
 	<div
 		class='lg:w-1/2 mx-auto px-4 my-10'>
-
 		<!-- Message flash-->
 		{% for message in app.flashes('error') %}
 			<div class='inline-flex items-center gap-4 rounded-md bg-red-600 px-2 py-1 text-sm font-sm my-4 shadow-lg'>
@@ -27,7 +26,6 @@
 				{{ app.user.username }}</h1>
 		</span>
 
-
 		<div class='flex flex-col gap-4'>
 			<div class='grid grid-flow-rows gap-2 mb-4  bg-black p-4 rounded-lg'>
 				<h2>Identifiants</h2>
@@ -39,10 +37,10 @@
 					Email:
 					{{ app.user.email }}
 				</span>
-				<div class='flex gap-6 justify-between w-full my-4'>
-					<a href='{{ path('app_edit_profile')}}' class='w-full rounded-xl bg-yellow-400 text-black text-anton font-semibold p-2 text-center'>Modifier le profil</a>
-					<a href='{{ path('app_edit_password')}}' class='w-full rounded-xl bg-yellow-400 text-black text-anton font-semibold p-2 text-center'>Modifier le mot de passe</a>
-					<a href='{{ path('app_edit_avatar')}}' class='w-full rounded-xl bg-yellow-400 text-black text-anton font-semibold p-2 text-center'>Modifier mon avatar</a>
+				<div class='flex gap-2 justify-between my-4'>
+					<a href='{{ path('app_edit_profile')}}' class='rounded-xl bg-yellow-400 text-black text-anton p-2 text-center'>Modifier le profil</a>
+					<a href='{{ path('app_edit_password')}}' class='rounded-xl bg-yellow-400 text-black text-anton p-2 text-center'>Modifier le mot de passe</a>
+					<a href='{{ path('app_edit_avatar')}}' class='rounded-xl bg-yellow-400 text-black text-anton p-2 text-center'>Modifier mon avatar</a>
 				</div>
 			</div>
 			{% if app.user.posts is not empty %}
@@ -61,8 +59,9 @@
 			{% if app.user.comments|length > 0 %}
 				<div class='grid grid-flow-rows gap-2 mb-4  bg-black p-4 rounded-lg'>
 					<h2>Les commentaires ({{ app.user.comments|length }})</h2>
-				</div>
-			{% endif %}
-		</div>
+				</ul>
+				#}
+			</div>
+		{% endif %}
 	</div>
-{% endblock %}
+</div>{% endblock %}

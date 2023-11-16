@@ -20,11 +20,15 @@
 			</div>
 		{% endfor %}
 
-		<h1 class='mb-4 text-center'>{% trans %}Modification de l'avatar de
+		<span class='bg-yellow-400 rounded-full p-2 mb-8 text-black'>
+			<a href="{{path('app_profile')}}">&#11153; Retour à mon compte</a>
+		</span>
+
+		<h1 class='my-4 mt-10 text-center'>{% trans %}Modification de l'avatar de
 			{% endtrans %}
 			{{ app.user.username }}</h1>
 
-		<div class='w-1/2 mx-auto bg-black p-6 rounded-lg'>
+		<div class='flex w-1/2 mx-auto bg-black p-6 rounded-lg'>
 			{{ form_errors(avatarForm) }}
 
 			{{form_start(avatarForm)}}

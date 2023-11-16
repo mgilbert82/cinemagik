@@ -8,7 +8,7 @@
 
 {% block body %}
 	<div class='relative w-full'>
-		<img src='/uploads/{{category.media.filename}}' alt='category-icon' class='w-full shadow-lg h-[600px] object-cover absolute -top-2 -z-50 opacity:40'>
+		<img src='{{('/uploads/' ~ category.media.filename) | imagine_filter('cardimg')}}' alt='image-{{category.slug}}' class='w-full shadow-lg h-[600px] object-cover absolute -top-2 -z-50 opacity:40'>
 	</div>
 
 	<div class='flex items-end m-4 justify-end z-50'>
