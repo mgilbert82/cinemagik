@@ -8,7 +8,6 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        anton: ["Anton", "sans-serif"],
         lato: ["Lato", "sans-serif"],
         limelight: ["Limelight", "sans-serif"],
       },

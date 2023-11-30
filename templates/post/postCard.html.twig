@@ -1,10 +1,10 @@
 {% set post_detail = path('post_detail', {'slug':post.slug}) %}
 
-<div class='lg:max-w-xl flex flex-wrap mx-2'>
+<div class='lg:max-w-xl flex flex-wrap mx-auto m-4'>
 	<a href="{{post_detail}}" class='cursor-pointer'>
 		<div class='bg-black shadow-2xl shadow-black rounded-lg'>
 			<div class='md:flex-shrink-0 relative bg-black rounded-lg lg:min-h-[150px] sm:min-h-[250px]'>
-				<p class='text-sm text-neutral-300 flex items-center gap-2 py-2 px-4'>
+				<p class='lg:text-sm sm:text-lg text-neutral-300 flex items-center gap-2 py-2 px-4'>
 					<img src='/images/icons/category-ico-r.svg' alt='category-icon' class='w-7 h-7'>
 					{{post.category}}
 				</p>
@@ -12,16 +12,16 @@
 					<img src="{{ ('/uploads/' ~ post.featImg.filename) | imagine_filter('thumb') }}" alt="{{ post.slug }}" class='w-full h-64 object-cover object-top hover:opacity-60'>
 				</div>
 				{% if post.source %}
-					<img src='/uploads/{{post.source.featImg.filename }}' alt='{{post.source.name}}' class='absolute right-4 top-5 w-10 h-10 rounded-full object-cover shadow-lg shadow-black'>
+					<img src='/uploads/{{post.source.featImg.filename }}' alt='{{post.source.name}}' class='absolute right-4 top-5 lg:w-10 lg:h-10 w-12 h-12 rounded-full object-cover shadow-lg shadow-black'>
 				{% endif %}
 			</div>
-			<div class='my-2 sm:my-4 mx-6 lg:min-h-[310px] md:min-h-[250px] flex flex-col justify-between'>
+			<div class='lg:min-h-[310px] md:min-h-[200px] flex flex-col justify-between my-2 sm:my-4 mx-6'>
 				<div class='flex-1 flex flex-col gap-2'>
 					<a href="{{post_detail}}" class='underline text-yellow-400'>
-						<h4 class='font-bold text-xl font-anton uppercase text-yellow-400'>{{post.title}}</h4>
+						<h4 class='lg:text-xl md:text-2xl lg:tracking-normal md:tracking-wider font-bold font-anton uppercase text-yellow-400'>{{post.title}}</h4>
 					</a>
 					{% if post.featText is not null %}
-						<p class='text-neutral-50 text-base'>
+						<p class='lg:text-lg text-lg text-neutral-50'>
 							{{post.featText | striptags | slice(0,180)}}...
 						</p>
 
