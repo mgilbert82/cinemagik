@@ -9,7 +9,7 @@
 
 	{# {{dump(categories)}} #}
 	<div class='container mx-auto my-10'>
-		<div class='grid lg:grid-cols-4 sm:grid-cols-2 justify-center gap-2'>
+		<div class='grid lg:grid-cols-3 sm:grid-cols-2 justify-center gap-4'>
 			{% for category in categories %}
 				{% include 'category/categoryCard.html.twig' %}
 			{% endfor %}
