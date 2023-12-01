@@ -7,8 +7,8 @@
 		</span>
 	</a>
 	<div class='hidden z-50 absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6'>
-		<a class='text-xl font-anton text-yellow-400 uppercase tracking-wider border-b border-[#1C1917] hover:border-b hover:border-red-600' href='{{path('app_movies')}}'>Films</a>
-		<a class='text-xl font-anton text-yellow-400 uppercase tracking-wider border-b border-[#1C1917] hover:border-b hover:border-red-600' href='{{path('app_tvshow')}}'>Séries</a>
+		<a class='text-xl text-yellow-400 uppercase tracking-wider border-b border-[#1C1917] hover:border-b hover:border-red-600' href='{{path('app_movies')}}'>Films</a>
+		<a class='text-xl text-yellow-400 uppercase tracking-wider border-b border-[#1C1917] hover:border-b hover:border-red-600' href='{{path('app_tvshow')}}'>Séries</a>
 		<!-- SVOD-->
 		{{ render(controller('App\\Controller\\SourceController::getSourcesName')) }}
 	</div>

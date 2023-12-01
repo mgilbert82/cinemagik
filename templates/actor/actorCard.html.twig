@@ -1,8 +1,7 @@
 {# {% set director_detail = path('director_detail', {'slug':director.slug}) %} #}
-<div class='flex flex-col items-center gap-4 bg-neutral-800 p-4 rounded-lg mt-4 min-h-[150px]'>
+<div class='flex flex-col items-center gap-4 bg-black p-4 rounded-lg mt-4 min-h-[150px] shadow'>
 	<img src='/uploads/{{actor.featImg.filename }}' alt='{{actor.slug}}' class='w-20 h-20 object-cover object-center rounded-full border-white border-2'>
 	<a href='/acteur/{{actor.slug}}' class='text-sm underline text-yellow-400 flex items-center gap-2'>
-		<img src='/images/icons/actor-ico.svg' alt='cator-icon' class='w-6 h-6'>
 		<h2 class='font-bold text-xl tracking-wide underline float-left'>{{ actor.name}}</h2>
 	</a>
 	<p class='p-2'>{{actor.featText | striptags|slice(0,180)}}...

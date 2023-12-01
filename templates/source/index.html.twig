@@ -7,12 +7,12 @@
 {% endblock %}
 
 {% block body %}
-	<div class='max-w-sm lg:max-w-full lg:flex items-center justify-center gap-2 w-1/2 mx-auto my-8'>
+	<div class='flex items-center justify-center gap-2 w-full lg:w-1/2 p-4 lg:mx-auto my-8'>
 		<div class='bg-neutral-50 rounded-lg p-4 flex lg:flex-row flex-col items-center justify-center gap-4 leading-normal'>
 			<img src='/uploads/{{source.featImg.filename}}' alt='{{source.name}}' class='w-20 h-20 object-cover object-center rounded-full border-black border-2'>
 
 			<div class='mb-4'>
-				<div class='font-bold text-xl mb-2 font-anton my-4 uppercase text-gray-700'>
+				<div class='font-bold text-xl mb-2 font-anton my-4 uppercase text-gray-700 lg:text-left text-center'>
 					{{source.name}}
 				</div>
 				<p class='text-gray-700 text-base'>{{source.featText}}</p>

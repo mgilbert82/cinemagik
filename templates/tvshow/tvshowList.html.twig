@@ -8,17 +8,18 @@
 {% block body %}
 	<div class='container mx-auto mt-10'>
 		<div class='flex items-center gap-2'>
-			<h1 class='lg:px-4 px-8'>Fan de séries, nous aussi !!
-				<br>Retrouvez-ici l'ensemble de notre sélection.</h1>
+			<h1 class='lg:px-4 px-8'>Amateurs de séries, bienvenue dans notre univers ! 
+				<br>Découvrez ici l'intégralité de nos choix.</h1>
 		</div>
-		<div
-			class='lg:flex justify-between lg:px-4 px-8 mt-10 lg:mt-0'>
-			<!-- Post list -->
-			{% include 'post/postList.html.twig' %}
-			<!-- end post list -->
-			<div class='w-full lg:w-1/3 lg:px-4 lg:my-4'>
-				{% include 'components/aside.html.twig' %}
-			</div>
+	<div
+		class='lg:flex justify-between lg:p-2 mt-10 lg:mt-0'>
+		
+		<div class='w-full lg:max-w-xs lg:my-0 my-10 mx-auto'>
+			{% include 'components/aside.html.twig' %}
 		</div>
+		<!-- Post list -->
+		{% include 'post/postList.html.twig' %}
+		<!-- end post list -->
+	</div>
 	</div>
 {% endblock %}
